@@ -6,31 +6,21 @@ We want this community to be friendly and respectful to each other. Please follo
 
 To get started with the project, run `npm install` in the root directory to install the required dependencies for each package:
 
-```sh  
+```sh
 npm install
-```  
+```
 
 Then build the main library by running 'npm build' in the root directory
 
-```sh  
+```sh
 npm build
-```   
-
-While developing, you can run the example to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
-
-To start the packager:
-
-```sh 
-cd vue-piwik-pro-example
-npm install
-npm run dev
-``` 
+```
 
 Remember to add tests for your change if possible. Run the unit tests by:
 
-```sh  
-npm run test  
-```  
+```sh
+npm run test
+```
 
 ### Commit message convention
 
