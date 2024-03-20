@@ -11,7 +11,7 @@ describe('init', () => {
       setAttribute: jest.fn(),
     })
     appendChildMock = jest.fn()
-  
+
     // Mock document.createElement and document.getElementsByTagName
     document.createElement = createElementMock
     document.getElementsByTagName = jest.fn(
@@ -68,16 +68,18 @@ describe('init', () => {
 
   it('should log error if document is not available', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
-  
+
     const originalCreateElement = document.createElement
-    document.createElement = () => { throw new Error('document not available') }
-  
+    document.createElement = () => {
+      throw new Error('document not available')
+    }
+
     init.init('containerId', 'containerUrl')
-  
+
     expect(consoleErrorMock).toHaveBeenCalledWith(
       'Was not possible to access Document interface. Make sure this module is running on a Browser w/ access do Document interface.'
     )
-  
+
     document.createElement = originalCreateElement
   })
 })

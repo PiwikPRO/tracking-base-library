@@ -1,4 +1,4 @@
-import { LimitedArrayFiveStrings } from './utils.ts'
+import { LimitedArrayFiveStrings } from './utils'
 
 type DimensionId = number
 

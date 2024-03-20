@@ -1,7 +1,11 @@
-import { ECOMMERCE_TRACK_EVENT, ECOMMERCE_V2_TRACK_EVENT } from '../../constants/track-event.constant'
+import {
+  ECOMMERCE_TRACK_EVENT,
+  ECOMMERCE_V2_TRACK_EVENT,
+} from '../../constants/track-event.constant'
 
 import { PaymentInformation } from '../../interfaces/payment'
 import { Product } from '../../interfaces/product'
+import { Tracker } from '../../interfaces/tracker.ts'
 import { push } from '../paqService/paq.service.ts'
 
 /**
@@ -46,7 +50,7 @@ export function getEcommerceItems(): Promise<object> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any): void {
+        function (this: Tracker): void {
           resolve(this.getEcommerceItems())
         },
       ])

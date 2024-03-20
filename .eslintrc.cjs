@@ -1,46 +1,16 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
+/** @type {import('eslint').Linter.Config} */
+const config = {
+  parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-essential',
-    'prettier',
-    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
   ],
-  overrides: [
-    {
-      env: {
-        node: true,
-      },
-      files: ['.eslintrc.{js,cjs}'],
-      parserOptions: {
-        sourceType: 'script',
-      },
-    },
-    {
-      files: ['*.d.ts'],
-      rules: {
-        '@typescript-eslint/ban-types': 'off',
-      },
-    },
-  ],
+  plugins: ['@typescript-eslint'],
+  ignorePatterns: ['.eslintrc.cjs', 'example'],
   parserOptions: {
-    ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint', 'vue'],
-  rules: {
-    indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
-    'semi-style': ['error', 'last'],
-    'semi-spacing': ['error', { before: false, after: false }],
-    '@typescript-eslint/no-explicit-any': 'off',
+    project: true,
+    tsconfigRootDir: __dirname,
   },
 }
+
+module.exports = config

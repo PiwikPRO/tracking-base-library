@@ -1,11 +1,13 @@
+import { Tracker } from '../../interfaces/tracker'
 import { USER_MANAGEMENT_TRACK_EVENT } from '../../constants/track-event.constant'
+import { VisitorInfo } from '../../interfaces/visitorInfo'
 import { push } from '../paqService/paq.service'
 
 export function getUserId(): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any): void {
+        function (this: Tracker): void {
           resolve(this.getUserId())
         },
       ])
@@ -25,11 +27,11 @@ export function resetUserId(): void {
   push([USER_MANAGEMENT_TRACK_EVENT.RESET_USER_ID])
 }
 
-export function getVisitorId(): Promise<any> {
+export function getVisitorId(): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any): void {
+        function (this: Tracker): void {
           resolve(this.getVisitorId())
         },
       ])
@@ -41,11 +43,11 @@ export function getVisitorId(): Promise<any> {
   })
 }
 
-export function getVisitorInfo(): Promise<any[]> {
+export function getVisitorInfo(): Promise<VisitorInfo> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any): void {
+        function (this: Tracker): void {
           resolve(this.getVisitorInfo())
         },
       ])

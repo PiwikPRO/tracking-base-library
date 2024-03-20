@@ -23,7 +23,7 @@ function init(containerId: string, containerUrl: string, nonce?: string) {
     )
     return
   }
-  
+
   let s: HTMLScriptElement
   try {
     s = document.createElement('script')
@@ -52,8 +52,7 @@ tags.async=!0,tags.src="${containerUrl}/"+id+".js"+qPString,scripts.parentNode.i
 }
 
 export const IS_DEBUG =
-  (typeof process !== 'undefined' &&
-    process.env.NODE_ENV === 'development') ||
+  (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') ||
   (typeof window !== 'undefined' && (window as PiwikProWindow).IS_DEBUG) ||
   false
 

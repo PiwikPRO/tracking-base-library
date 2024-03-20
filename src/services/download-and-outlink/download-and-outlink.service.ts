@@ -1,13 +1,21 @@
 import { DOWNLOAD_AND_OUTLINK_TRACK_EVENT } from '../../constants/track-event.constant'
+import { Dimensions } from './../../interfaces/utils'
+import { Tracker } from '../../interfaces/tracker'
 import { push } from '../paqService/paq.service'
 
 export function trackLink(
   url: string,
   linkType: string,
-  customData?: object,
-  callback?: (params: any) => void
+  dimensions?: Dimensions,
+  callback?: () => void
 ) {
-  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.LINK, url, linkType, customData, callback])
+  push([
+    DOWNLOAD_AND_OUTLINK_TRACK_EVENT.LINK,
+    url,
+    linkType,
+    dimensions,
+    callback,
+  ])
 }
 
 export function enableLinkTracking(enable: boolean) {
@@ -31,18 +39,21 @@ export function addDownloadExtensions(extensions: string[]) {
 }
 
 export function removeDownloadExtensions(extensions: string[]) {
-  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.REMOVE_DOWNLOAD_EXTENSIONS, extensions])
+  push([
+    DOWNLOAD_AND_OUTLINK_TRACK_EVENT.REMOVE_DOWNLOAD_EXTENSIONS,
+    extensions,
+  ])
 }
 
 export function setLinkTrackingTimer(time: number) {
   push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_LINK_TRACKING_TIMER, time])
 }
 
-export function getLinkTrackingTimer(): Promise<string> {
+export function getLinkTrackingTimer(): Promise<number> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any) {
+        function (this: Tracker) {
           resolve(this.getLinkTrackingTimer())
         },
       ])

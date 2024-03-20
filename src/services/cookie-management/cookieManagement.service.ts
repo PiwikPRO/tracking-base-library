@@ -1,4 +1,5 @@
 import { COOKIE_TRACK_EVENT } from '../../constants/track-event.constant'
+import { Tracker } from '../../interfaces/tracker'
 import { push } from '../paqService/paq.service'
 
 export function disableCookies() {
@@ -17,7 +18,7 @@ export function hasCookies(): Promise<boolean> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any) {
+        function (this: Tracker) {
           resolve(this.hasCookies())
         },
       ])

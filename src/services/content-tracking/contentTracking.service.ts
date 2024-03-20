@@ -7,12 +7,16 @@ export function trackAllContentImpressions() {
 
 export function trackVisibleContentImpressions(
   checkOnScroll?: boolean,
-  watchIterval?: number
+  watchInterval?: number
 ) {
-  push([CONTENT_TRACK_EVENT.VISIBLE_CONTENT_IMPRESSIONS, checkOnScroll, watchIterval])
+  push([
+    CONTENT_TRACK_EVENT.VISIBLE_CONTENT_IMPRESSIONS,
+    checkOnScroll,
+    watchInterval,
+  ])
 }
 
-export function trackContentImpressionsWithinNode(domNode: any) {
+export function trackContentImpressionsWithinNode(domNode: Node) {
   push([CONTENT_TRACK_EVENT.CONTENT_IMPRESSIONS_WITH_NODE, domNode])
 }
 
@@ -34,10 +38,14 @@ export function logAllContentBlocksOnPage(): void {
 }
 
 export function trackContentInteractionNode(
-  domNode: any,
+  domNode: Node,
   contentInteraction: string
 ) {
-  push([CONTENT_TRACK_EVENT.CONTENT_INTERACTION_NODE, domNode, contentInteraction])
+  push([
+    CONTENT_TRACK_EVENT.CONTENT_INTERACTION_NODE,
+    domNode,
+    contentInteraction,
+  ])
 }
 
 export function trackContentInteraction(

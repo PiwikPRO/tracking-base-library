@@ -10,10 +10,10 @@ To get started with the project, run `npm install` in the root directory to inst
 npm install
 ```
 
-Then build the main library by running 'npm build' in the root directory
+Then build the main library by running 'npm run build' in the root directory
 
 ```sh
-npm build
+npm run build
 ```
 
 Remember to add tests for your change if possible. Run the unit tests by:
