@@ -33,7 +33,7 @@ export function getCookieDomain(): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any) {
+        function (this: Tracker) {
           resolve(this.getCookieDomain())
         },
       ])
@@ -49,7 +49,7 @@ export function getCookiePath(): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any) {
+        function (this: Tracker) {
           resolve(this.getCookiePath())
         },
       ])
@@ -65,7 +65,7 @@ export function getConfigVisitorCookieTimeout(): Promise<number> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any) {
+        function (this: Tracker) {
           resolve(this.getConfigVisitorCookieTimeout())
         },
       ])
@@ -85,7 +85,7 @@ export function getSessionCookieTimeout(): Promise<number> {
   return new Promise((resolve, reject) => {
     try {
       push([
-        function (this: any) {
+        function (this: Tracker) {
           resolve(this.getSessionCookieTimeout())
         },
       ])

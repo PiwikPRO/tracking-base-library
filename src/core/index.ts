@@ -1,5 +1,3 @@
-import { PiwikProWindow } from '../interfaces/piwikpro.window.ts'
-
 function init(containerId: string, containerUrl: string, nonce?: string) {
   if (!containerId) {
     console.error('Empty tracking code for Piwik Pro.')
@@ -53,7 +51,7 @@ tags.async=!0,tags.src="${containerUrl}/"+id+".js"+qPString,scripts.parentNode.i
 
 export const IS_DEBUG =
   (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') ||
-  (typeof window !== 'undefined' && (window as PiwikProWindow).IS_DEBUG) ||
+  (typeof window !== 'undefined' && window.IS_DEBUG) ||
   false
 
 export default {
