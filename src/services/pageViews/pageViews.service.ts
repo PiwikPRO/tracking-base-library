@@ -1,5 +1,5 @@
-import { PAGE_VIEWS_TRACK_EVENT } from '../../constants/track-event.constant.ts'
-import { push } from '../paqService/paq.service.ts'
+import { PAGE_VIEWS_TRACK_EVENT } from '../../constants/track-event.constant'
+import { push } from '../paqService/paq.service'
 
 export function trackPageView(customPageTitle?: string) {
   push([

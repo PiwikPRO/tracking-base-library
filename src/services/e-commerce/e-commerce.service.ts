@@ -5,8 +5,8 @@ import {
 
 import { PaymentInformation } from '../../interfaces/payment'
 import { Product } from '../../interfaces/product'
-import { Tracker } from '../../interfaces/tracker.ts'
-import { push } from '../paqService/paq.service.ts'
+import { Tracker } from '../../interfaces/tracker'
+import { push } from '../paqService/paq.service'
 
 /**
  * @deprecated Please use the ecommerceAddToCart instead.
