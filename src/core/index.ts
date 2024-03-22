@@ -1,4 +1,8 @@
-function init(containerId: string, containerUrl: string, nonce?: string) {
+export function init(
+  containerId: string,
+  containerUrl: string,
+  nonce?: string
+) {
   if (!containerId) {
     console.error('Empty tracking code for Piwik Pro.')
     return
@@ -9,34 +13,21 @@ function init(containerId: string, containerUrl: string, nonce?: string) {
     return
   }
 
-  if (!document) {
+  if (typeof window === 'undefined') {
     console.error(
-      'Was not possible to access Document interface. Make sure this module is running on a Browser w/ access do Document interface.'
-    )
-  }
-
-  if (!document || typeof document.createElement !== 'function') {
-    console.error(
-      'Was not possible to access Document interface. Make sure this module is running on a Browser w/ access do Document interface.'
+      'Was not possible to access window. Make sure this module is running in a browser'
     )
     return
   }
 
-  let s: HTMLScriptElement
-  try {
-    s = document.createElement('script')
-  } catch (error) {
-    console.error(
-      'Was not possible to access Document interface. Make sure this module is running on a Browser w/ access do Document interface.'
-    )
-    return
-  }
+  const scriptEl = document.createElement('script')
 
-  s.async = true
+  scriptEl.id = 'PiwikPROInitializer'
+  scriptEl.async = true
   if (nonce) {
-    s.setAttribute('nonce', nonce)
+    scriptEl.nonce = nonce
   }
-  s.text = `(function(window, document, dataLayerName, id) {
+  scriptEl.text = `(function(window, document, dataLayerName, id) {
 window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});var scripts=document.getElementsByTagName('script')[0],tags=document.createElement('script');
 function stgCreateCookie(a,b,c){var d="";if(c){var e=new Date;e.setTime(e.getTime()+24*c*60*60*1e3),d="; expires="+e.toUTCString();f="; SameSite=Strict"}document.cookie=a+"="+b+d+f+"; path=/"}
 var isStgDebug=(window.location.href.match("stg_debug")||document.cookie.match("stg_debug"))&&!window.location.href.match("stg_disable_debug");stgCreateCookie("stg_debug",isStgDebug?1:"",isStgDebug?14:-1);
@@ -46,14 +37,10 @@ tags.async=!0,tags.src="${containerUrl}/"+id+".js"+qPString,scripts.parentNode.i
 })(window, document, 'dataLayer', '${containerId}')`
 
   const head: HTMLHeadElement = document.getElementsByTagName('body')[0]
-  head.appendChild(s)
+  head.appendChild(scriptEl)
 }
 
 export const IS_DEBUG =
   (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') ||
   (typeof window !== 'undefined' && window.IS_DEBUG) ||
   false
-
-export default {
-  init,
-}
