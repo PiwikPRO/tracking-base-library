@@ -1,54 +1,38 @@
-import init from './index'
+import { init } from './index'
+
+afterEach(() => {
+  const body = document.getElementsByTagName('body')[0]
+  body.innerHTML = ''
+})
 
 describe('init', () => {
-  let createElementMock: jest.Mock
-  let appendChildMock: jest.Mock
-
-  beforeEach(() => {
-    createElementMock = jest.fn().mockReturnValue({
-      async: false,
-      setAttribute: jest.fn(),
-    })
-    appendChildMock = jest.fn()
-
-    // Mock document.createElement and document.getElementsByTagName
-    document.createElement = createElementMock
-    document.getElementsByTagName = jest.fn(
-      () =>
-        [{ appendChild: appendChildMock }] as unknown as HTMLCollectionOf<any>
-    )
-  })
-
-  afterEach(() => {
-    jest.restoreAllMocks()
-    jest.resetModules()
-  })
-
   it('should create and append script element with correct attributes', () => {
-    init.init('containerId', 'containerUrl')
+    init('containerId', 'containerUrl')
 
-    expect(createElementMock).toHaveBeenCalledWith('script')
-    expect(createElementMock.mock.results[0].value.async).toBe(true)
-    expect(createElementMock.mock.results[0].value.text).toMatch(
+    const script = document.getElementById(
+      'PiwikPROInitializer'
+    ) as HTMLScriptElement
+
+    expect(script.async).toBe(true)
+    expect(script.text).toMatch(
       /window\[dataLayerName\]=window\[dataLayerName\]||\[\]/
-    )
-    expect(appendChildMock).toHaveBeenCalledWith(
-      createElementMock.mock.results[0].value
     )
   })
 
   it('should set nonce attribute if provided', () => {
-    init.init('containerId', 'containerUrl', 'nonce')
+    init('containerId', 'containerUrl', 'nonce')
 
-    expect(
-      createElementMock.mock.results[0].value.setAttribute
-    ).toHaveBeenCalledWith('nonce', 'nonce')
+    const script = document.getElementById(
+      'PiwikPROInitializer'
+    ) as HTMLScriptElement
+
+    expect(script.nonce).toEqual('nonce')
   })
 
   it('should log error if containerId is empty', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
 
-    init.init('', 'containerUrl')
+    init('', 'containerUrl')
 
     expect(consoleErrorMock).toHaveBeenCalledWith(
       'Empty tracking code for Piwik Pro.'
@@ -58,27 +42,28 @@ describe('init', () => {
   it('should log error if containerUrl is empty', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
 
-    init.init('containerId', '')
+    init('containerId', '')
 
     expect(consoleErrorMock).toHaveBeenCalledWith(
       'Empty tracking URL for Piwik Pro.'
     )
   })
 
-  it('should log error if document is not available', () => {
+  it('should log error if trying to run in server environment', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
 
-    const originalCreateElement = document.createElement
-    document.createElement = () => {
-      throw new Error('document not available')
-    }
+    const originalWindow = global.window
+    // here we simulate as if the code was run in the server environment
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    delete global.window
 
-    init.init('containerId', 'containerUrl')
+    init('containerId', 'containerUrl')
 
     expect(consoleErrorMock).toHaveBeenCalledWith(
-      'Was not possible to access Document interface. Make sure this module is running on a Browser w/ access do Document interface.'
+      'Was not possible to access window. Make sure this module is running in a browser'
     )
 
-    document.createElement = originalCreateElement
+    global.window = originalWindow
   })
 })

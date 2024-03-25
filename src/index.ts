@@ -16,5 +16,5 @@ export * from './interfaces/payment'
 export * from './interfaces/product'
 
 export default {
-  initialize: PiwikPro.default.init,
+  initialize: PiwikPro.init,
 }
