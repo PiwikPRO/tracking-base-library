@@ -5,7 +5,7 @@ type DimensionId = number
 export type Product = {
   sku: string
   name?: string
-  category?: LimitedArrayFiveStrings<string[]>
+  category?: LimitedArrayFiveStrings
   price?: number
   quantity?: number
   brand?: string

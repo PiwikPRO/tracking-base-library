@@ -1,8 +1,8 @@
 import { TRACK_EVENT } from '../constants/track-event.constant'
 import { Tracker } from './tracker'
 
-export type LimitedArrayFiveStrings<T extends string[] = []> =
-  | [string, ...T]
+export type LimitedArrayFiveStrings =
+  | [string, ...string[]]
   | [string, string, string, string, string]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
