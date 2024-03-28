@@ -36,8 +36,8 @@ tags.async=!0,tags.src="${containerUrl}/"+id+".js"+qPString,scripts.parentNode.i
 !function(a,n,i){a[n]=a[n]||{};for(var c=0;c<i.length;c++)!function(i){a[n][i]=a[n][i]||{},a[n][i].api=a[n][i].api||function(){var a=[].slice.call(arguments,0);"string"==typeof a[0]&&window[dataLayerName].push({event:n+"."+i+":"+a[0],parameters:[].slice.call(arguments,1)})}}(i[c])}(window,"ppms",["tm","cm"]);
 })(window, document, 'dataLayer', '${containerId}')`
 
-  const head: HTMLHeadElement = document.getElementsByTagName('body')[0]
-  head.appendChild(scriptEl)
+  const body: HTMLHeadElement = document.getElementsByTagName('body')[0]
+  body.appendChild(scriptEl)
 }
 
 export const IS_DEBUG =
