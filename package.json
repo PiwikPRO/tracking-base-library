@@ -1,0 +1,65 @@
+{
+  "name": "@piwik-pro/tracking-base-library",
+  "private": true,
+  "author": "Piwik Pro Integration Team <integrations@piwik.pro>",
+  "license": "MIT",
+  "description": "Piwik PRO basic tracking library for the frontend.",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.js",
+  "source": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier . --list-different",
+    "format:fix": "npm run format -- --write",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@happy-dom/jest-environment": "^13.10.1",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.29",
+    "@typescript-eslint/eslint-plugin": "^7.3.0",
+    "@typescript-eslint/parser": "^7.3.0",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-transform-import-meta": "^2.2.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.2.5",
+    "ts-jest": "^29.1.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6"
+  },
+  "keywords": [
+    "typescript",
+    "piwik-pro",
+    "analytics",
+    "library",
+    "tracking",
+    "frontend"
+  ]
+}
