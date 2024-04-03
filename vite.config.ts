@@ -11,6 +11,8 @@ export default defineConfig({
     }),
   ],
   build: {
+    sourcemap: true,
+    minify: false,
     lib: {
       entry: './src/index.ts',
       name: 'tracking-base-library',
