@@ -28,6 +28,9 @@ export function addEcommerceItem(
   ])
 }
 
+/**
+ * Tracks action of adding products to a cart
+ */
 export function ecommerceAddToCart(products: Product[]) {
   push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_ADD_TO_CART, products])
 }
@@ -39,6 +42,9 @@ export function removeEcommerceItem(productSKU: string) {
   push([ECOMMERCE_TRACK_EVENT.REMOVE_ECOMMERCE_ITEM, productSKU])
 }
 
+/**
+ * Tracks action of removing a products from a cart
+ */
 export function ecommerceRemoveFromCart(products: Product[]) {
   push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_REMOVE_FROM_CART, products])
 }
@@ -84,6 +90,9 @@ export function trackEcommerceOrder(
   ])
 }
 
+/**
+ * Tracks conversion, including products and payment details
+ */
 export function ecommerceOrder(
   products: Product[],
   paymentInformation: PaymentInformation
@@ -98,6 +107,9 @@ export function trackEcommerceCartUpdate(cartAmount: number) {
   push([ECOMMERCE_TRACK_EVENT.TRACK_ECOMMERCE_CART_UPDATE, cartAmount])
 }
 
+/**
+ * Tracks current state of a cart 
+ */
 export function ecommerceCartUpdate(
   products: Product[],
   grandTotal: PaymentInformation['grandTotal']
@@ -105,6 +117,9 @@ export function ecommerceCartUpdate(
   push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_CART_UPDATE, products, grandTotal])
 }
 
+/**
+ * Tracks action of viewing product page
+ */
 export function ecommerceProductDetailView(products: Product[]) {
   push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_PRODUCT_DETAIL_VIEW, products])
 }

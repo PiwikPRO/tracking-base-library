@@ -1,7 +1,5 @@
 import { LimitedArrayFiveStrings } from './utils'
 
-type DimensionId = number
-
 export type Product = {
   sku: string
   name?: string
@@ -10,5 +8,5 @@ export type Product = {
   quantity?: number
   brand?: string
   variant?: string
-  customDimensions?: Record<DimensionId, string>
+  customDimensions?: Record<number, string>
 }

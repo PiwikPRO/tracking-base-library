@@ -14,6 +14,8 @@ export * as DataLayer from './services/dataLayer/dataLayer.service'
 
 export * from './interfaces/payment'
 export * from './interfaces/product'
+export * from './interfaces/visitorInfo'
+export type { Dimensions } from './interfaces/utils'
 
 export default {
   initialize: PiwikPro.init,
