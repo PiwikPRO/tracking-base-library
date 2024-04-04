@@ -2,6 +2,9 @@ import { CUSTOM_DIMENSIONS_TRACK_EVENT } from '../../constants/track-event.const
 import { Tracker } from '../../interfaces/tracker'
 import { push } from '../paqService/paq.service'
 
+/**
+ * Sets a custom dimension value to be used later.
+ */
 export function setCustomDimensionValue(
   customDimensionId: string | number,
   customDimensionValue: string
@@ -12,14 +15,18 @@ export function setCustomDimensionValue(
     customDimensionValue,
   ])
 }
-
+/**
+ * Removes a custom dimension with the specified ID.
+ */
 export function deleteCustomDimension(customDimensionId: string) {
   push([
     CUSTOM_DIMENSIONS_TRACK_EVENT.DELETE_CUSTOM_DIMENSION,
     customDimensionId,
   ])
 }
-
+/**
+ * Returns the value of a custom dimension with the specified ID.
+ */
 export function getCustomDimensionValue(
   customDimensionId: string | number
 ): Promise<string | undefined> {
