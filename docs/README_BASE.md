@@ -27,8 +27,7 @@ PiwikPro.initialize('container-id', 'container-url');
 
 ### Setup with nonce
 
-The nonce attribute is useful to allow-list specific elements, such as a particular inline script or style elements. It can help you to avoid using the CSP unsafe-inline directive, which would allow-l
-ist all inline scripts or styles.
+The nonce attribute is useful to allow-list specific elements, such as a particular inline script or style elements. It can help you to avoid using the CSP unsafe-inline directive, which would allow-list all inline scripts or styles.
 
 If you want your nonce to be passed to the script, pass it as the third argument when calling the script initialization method.
 
@@ -36,4 +35,13 @@ If you want your nonce to be passed to the script, pass it as the third argument
 import PiwikPro from '@piwikpro/tracking-base-library';
 
 PiwikPro.initialize('container-id', 'container-url', 'nonce-string');
+```
+
+### Basic usage
+```ts
+import { PageViews, GoalConversions } from "@piwikpro/tracking-base-library"
+
+PageViews.trackPageView();
+
+GoalConversions.trackGoal(1, 100);
 ```
