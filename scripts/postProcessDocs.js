@@ -9,7 +9,7 @@ const file = readFileSync(README, 'utf-8')
 const formattedOutput = file
   .split('\n')
   // remove additional heading
-  .filter((line) => !line.includes('# @piwik-pro/tracking-base-library'))
+  .filter((line) => !line.includes('# @piwikpro/tracking-base-library'))
   // remove links suited for multi page documentation
   .filter((line) => !line.includes('Exports'))
   // remove duplicated header

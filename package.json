@@ -1,5 +1,5 @@
 {
-  "name": "@piwik-pro/tracking-base-library",
+  "name": "@piwikpro/tracking-base-library",
   "private": true,
   "author": "Piwik Pro Integration Team <integrations@piwik.pro>",
   "license": "MIT",
