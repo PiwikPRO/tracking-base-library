@@ -17,4 +17,5 @@ export * from './interfaces/product'
 
 export default {
   initialize: PiwikPro.init,
+  getInitScript: PiwikPro.getInitScript,
 }
