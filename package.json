@@ -1,5 +1,5 @@
 {
-  "name": "@piwik-pro/tracking-base-library",
+  "name": "@piwikpro/tracking-base-library",
   "private": true,
   "author": "Piwik Pro Integration Team <integrations@piwik.pro>",
   "license": "MIT",
@@ -24,10 +24,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:docs": "typedoc && concat-md docs_raw > README.md && node scripts/postProcessDocs.js",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier . --list-different",
+    "format": "prettier 'src/**/*.ts' --list-different",
     "format:fix": "npm run format -- --write",
     "test": "jest",
     "typecheck": "tsc --noEmit"
@@ -42,12 +43,15 @@
     "@typescript-eslint/eslint-plugin": "^7.3.0",
     "@typescript-eslint/parser": "^7.3.0",
     "babel-jest": "^29.7.0",
+    "concat-md": "^0.5.1",
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "tslib": "^2.6.2",
+    "typedoc": "^0.25.12",
+    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "^5.4.2",
     "vite": "^5.1.7"
   },
