@@ -1,6 +1,6 @@
 {
   "name": "@piwikpro/tracking-base-library",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Piwik PRO basic tracking library for the frontend.",
   "author": "Piwik Pro Integration Team <integrations@piwik.pro>",
   "license": "MIT",
