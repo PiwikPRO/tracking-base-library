@@ -676,7 +676,7 @@ Removes a custom dimension with the specified ID.
 
 | Name | Type |
 | :------ | :------ |
-| `customDimensionId` | `string` |
+| `customDimensionId` | `string` \| `number` |
 
 #### Returns
 
@@ -856,9 +856,9 @@ to a downloadable file creates a download event
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `trackAlsoMiddleAndRightClicks?` | `boolean` |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `trackAlsoMiddleAndRightClicks` | `boolean` | `true` |
 
 #### Returns
 
