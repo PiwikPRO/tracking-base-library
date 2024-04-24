@@ -18,7 +18,7 @@ export function setCustomDimensionValue(
 /**
  * Removes a custom dimension with the specified ID.
  */
-export function deleteCustomDimension(customDimensionId: string) {
+export function deleteCustomDimension(customDimensionId: string | number) {
   push([
     CUSTOM_DIMENSIONS_TRACK_EVENT.DELETE_CUSTOM_DIMENSION,
     customDimensionId,

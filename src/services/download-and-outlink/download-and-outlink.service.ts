@@ -27,7 +27,7 @@ export function trackLink(
  * an external site (different domain) creates an outlink event. Opening a link
  * to a downloadable file creates a download event
  */
-export function enableLinkTracking(trackAlsoMiddleAndRightClicks?: boolean) {
+export function enableLinkTracking(trackAlsoMiddleAndRightClicks = true) {
   push([
     DOWNLOAD_AND_OUTLINK_TRACK_EVENT.ENABLE_LINK_TRACKING,
     trackAlsoMiddleAndRightClicks,
