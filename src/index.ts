@@ -11,6 +11,7 @@ export * as GoalConversions from './services/goal-conversions/goal-conversions.s
 export * as SiteSearch from './services/site-search/site-search.service'
 export * as UserManagement from './services/user-management/userManagement.service'
 export * as DataLayer from './services/dataLayer/dataLayer.service'
+export * as ErrorTracking from './services/error-tracking/errorTracking.service'
 
 export * from './interfaces/payment'
 export * from './interfaces/product'

@@ -65,6 +65,7 @@ GoalConversions.trackGoal(1, 100);
 - [CustomEvent](#modulescustomeventmd)
 - [DataLayer](#modulesdatalayermd)
 - [DownloadAndOutlink](#modulesdownloadandoutlinkmd)
+- [ErrorTracking](#moduleserrortrackingmd)
 - [GoalConversions](#modulesgoalconversionsmd)
 - [PageViews](#modulespageviewsmd)
 - [SiteSearch](#modulessitesearchmd)
@@ -161,7 +162,7 @@ ___
 
 #### Defined in
 
-[index.ts:20](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L20)
+[index.ts:21](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L21)
 
 
 <a name="modulescontenttrackingmd"></a>
@@ -1044,6 +1045,64 @@ Manually tracks outlink or download event with provided values
 #### Defined in
 
 [services/download-and-outlink/download-and-outlink.service.ts:9](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L9)
+
+
+<a name="moduleserrortrackingmd"></a>
+
+
+# ErrorTracking
+
+## Table of contents
+
+
+- [enableJSErrorTracking](#enablejserrortracking)
+- [trackError](#trackerror)
+
+## Functions
+
+### enableJSErrorTracking
+
+▸ **enableJSErrorTracking**(`unique?`): `void`
+
+Enables tracking of unhandled JavaScript errors.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `unique` | `boolean` | `true` | track only unique errors |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+services/error-tracking/errorTracking.service.ts:8
+
+___
+
+### trackError
+
+▸ **trackError**(`error`): `void`
+
+Attempts to send error tracking request using same format as native errors caught by enableJSErrorTracking().
+Such error request will still follow rules set for tracker, so it will be sent only when JS error tracking is enabled
+([enableJSErrorTracking](#enablejserrortracking) function was called before this attempt). It will also respect rules for tracking only unique errors.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `error` | `Error` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+services/error-tracking/errorTracking.service.ts:16
 
 
 <a name="modulesgoalconversionsmd"></a>
