@@ -1,3 +1,5 @@
+import { DataLayerEntry } from '../services/dataLayer/dataLayer.service'
+import * as DataLayer from '../services/dataLayer/dataLayer.service'
 import { init } from './index'
 
 afterEach(() => {
@@ -81,5 +83,17 @@ describe('init', () => {
     )
 
     global.window = originalWindow
+  })
+
+  it('should push events to the data layer with correct name', () => {
+    const dataLayerName = 'my-data-layer'
+    init('containerId', 'containerURL', {
+      dataLayerName,
+    })
+    const event = { event: 'event' }
+    DataLayer.push(event)
+
+    // first entry is from init script
+    expect((window[dataLayerName] as DataLayerEntry[])[1]).toEqual(event)
   })
 })
