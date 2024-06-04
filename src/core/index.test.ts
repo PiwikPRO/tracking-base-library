@@ -37,6 +37,16 @@ describe('init', () => {
     expect(script.nonce).toEqual('nonce')
   })
 
+  it('should set nonce attribute if provided as option', () => {
+    init('containerId', 'containerUrl', { nonce: 'nonce' })
+
+    const script = document.getElementById(
+      'PiwikPROInitializer'
+    ) as HTMLScriptElement
+
+    expect(script.nonce).toEqual('nonce')
+  })
+
   it('should log error if containerId is empty', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
 

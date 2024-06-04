@@ -34,7 +34,7 @@ If you want your nonce to be passed to the script, pass it as an option to the t
 ```ts
 import PiwikPro from '@piwikpro/tracking-base-library';
 
-PiwikPro.initialize('container-id', 'container-url', {nonce: 'nonce-string'});
+PiwikPro.initialize('container-id', 'container-url', { nonce: 'nonce-string' });
 ```
 
 ### Custom Data Layer Name
@@ -42,7 +42,7 @@ PiwikPro.initialize('container-id', 'container-url', {nonce: 'nonce-string'});
 ```ts
 import PiwikPro from '@piwikpro/tracking-base-library';
 
-PiwikPro.initialize('container-id', 'container-url', {dataLayerName: 'my-data-layer'});
+PiwikPro.initialize('container-id', 'container-url', { dataLayerName: 'my-data-layer' });
 ```
 
 ### Basic usage

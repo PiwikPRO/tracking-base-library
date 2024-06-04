@@ -16,7 +16,7 @@ function getConfig(nonceOrOptions?: string | InitOptions): InitOptions {
       nonce: nonceOrOptions,
     }
   }
-  
+
   if (!nonceOrOptions) {
     // default config
     return {
