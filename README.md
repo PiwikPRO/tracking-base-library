@@ -112,7 +112,7 @@ ___
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `dataLayerName?` | `string` | **`Default Value`** ```ts 'dataLayer' ``` |
+| `dataLayerName?` | `string` | Defaults to 'dataLayer' |
 | `nonce?` | `string` | - |
 
 #### Defined in

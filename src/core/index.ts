@@ -4,7 +4,7 @@ import * as DataLayer from '../services/dataLayer/dataLayer.service'
 export type InitOptions = {
   nonce?: string
   /**
-   * @defaultValue 'dataLayer'
+   * Defaults to 'dataLayer'
    */
   dataLayerName?: string
 }
