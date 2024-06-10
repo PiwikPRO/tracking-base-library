@@ -14,6 +14,13 @@ const formattedOutput = file
   .filter((line) => !line.includes('### Functions'))
   // remove remove additional prefix
   .map((line) => line.replace('Namespace: ', ''))
+  // increase heading level for the title
+  .map((line) =>
+    line.replace(
+      '## Piwik PRO Tracking Base Library',
+      '# Piwik PRO Tracking Base Library'
+    )
+  )
   .join('\n')
 
 writeFileSync(README, formattedOutput)
