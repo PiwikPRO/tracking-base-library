@@ -33,12 +33,20 @@ PiwikPro.initialize('container-id', 'container-url');
 
 The nonce attribute is useful to allow-list specific elements, such as a particular inline script or style elements. It can help you to avoid using the CSP unsafe-inline directive, which would allow-list all inline scripts or styles.
 
-If you want your nonce to be passed to the script, pass it as the third argument when calling the script initialization method.
+If you want your nonce to be passed to the script, pass it as an option to the third argument when calling the script initialization method.
 
 ```ts
 import PiwikPro from '@piwikpro/tracking-base-library';
 
-PiwikPro.initialize('container-id', 'container-url', 'nonce-string');
+PiwikPro.initialize('container-id', 'container-url', { nonce: 'nonce-string' });
+```
+
+### Custom Data Layer Name
+
+```ts
+import PiwikPro from '@piwikpro/tracking-base-library';
+
+PiwikPro.initialize('container-id', 'container-url', { dataLayerName: 'my-data-layer' });
 ```
 
 ### Basic usage
@@ -75,6 +83,7 @@ GoalConversions.trackGoal(1, 100);
 ### Type Aliases
 
 - [Dimensions](#dimensions)
+- [InitOptions](#initoptions)
 - [PaymentInformation](#paymentinformation)
 - [Product](#product)
 - [VisitorInfo](#visitorinfo)
@@ -92,6 +101,23 @@ GoalConversions.trackGoal(1, 100);
 #### Defined in
 
 [interfaces/utils.ts:11](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/utils.ts#L11)
+
+___
+
+### InitOptions
+
+Ƭ **InitOptions**: `Object`
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `dataLayerName?` | `string` | Defaults to 'dataLayer' |
+| `nonce?` | `string` | - |
+
+#### Defined in
+
+[core/index.ts:4](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L4)
 
 ___
 
@@ -157,12 +183,12 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `getInitScript` | (`__namedParameters`: \{ `containerId`: `string` ; `containerUrl`: `string`  }) => `string` |
-| `initialize` | (`containerId`: `string`, `containerUrl`: `string`, `nonce?`: `string`) => `void` |
+| `getInitScript` | (`__namedParameters`: \{ `containerId`: `string` ; `containerUrl`: `string` ; `dataLayerName?`: `string`  }) => `string` |
+| `initialize` | (`containerId`: `string`, `containerUrl`: `string`, `nonce?`: `string`) => `void`(`containerId`: `string`, `containerUrl`: `string`, `options?`: [`InitOptions`](#initoptions)) => `void` |
 
 #### Defined in
 
-[index.ts:21](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L21)
+[index.ts:22](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L22)
 
 
 <a name="modulescontenttrackingmd"></a>
@@ -777,8 +803,23 @@ Tracks a custom event, e.g. when a visitor interacts with the page
 
 ## Table of contents
 
+### Type Aliases
+
+- [DataLayerEntry](#datalayerentry)
+
 
 - [push](#push)
+- [setDataLayerName](#setdatalayername)
+
+## Type Aliases
+
+### DataLayerEntry
+
+Ƭ **DataLayerEntry**: `Record`\<`string`, `AnyData`\>
+
+#### Defined in
+
+[services/dataLayer/dataLayer.service.ts:11](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/dataLayer/dataLayer.service.ts#L11)
 
 ## Functions
 
@@ -792,11 +833,31 @@ Adds entry to a data layer
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `any` |
+| `data` | [`DataLayerEntry`](#datalayerentry) |
 
 #### Returns
 
 `number`
+
+#### Defined in
+
+[services/dataLayer/dataLayer.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/dataLayer/dataLayer.service.ts#L15)
+
+___
+
+### setDataLayerName
+
+▸ **setDataLayerName**(`name`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+
+#### Returns
+
+`void`
 
 #### Defined in
 
@@ -1078,7 +1139,7 @@ Enables tracking of unhandled JavaScript errors.
 
 #### Defined in
 
-services/error-tracking/errorTracking.service.ts:8
+[services/error-tracking/errorTracking.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/error-tracking/errorTracking.service.ts#L8)
 
 ___
 
@@ -1102,7 +1163,7 @@ Such error request will still follow rules set for tracker, so it will be sent o
 
 #### Defined in
 
-services/error-tracking/errorTracking.service.ts:16
+[services/error-tracking/errorTracking.service.ts:16](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/error-tracking/errorTracking.service.ts#L16)
 
 
 <a name="modulesgoalconversionsmd"></a>

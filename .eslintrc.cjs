@@ -8,7 +8,7 @@ const config = {
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['.eslintrc.cjs', 'example', 'dist', 'scripts', 'coverage'],
   parserOptions: {
-    project: true,
+    project: "tsconfig.eslint.json",
     tsconfigRootDir: __dirname,
   },
 }
