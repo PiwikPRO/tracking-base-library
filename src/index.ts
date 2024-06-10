@@ -17,6 +17,7 @@ export * from './interfaces/payment'
 export * from './interfaces/product'
 export * from './interfaces/visitorInfo'
 export type { Dimensions } from './interfaces/utils'
+export type { InitOptions } from './core'
 
 export default {
   initialize: PiwikPro.init,

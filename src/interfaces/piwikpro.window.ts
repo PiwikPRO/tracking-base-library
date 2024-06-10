@@ -1,7 +1,8 @@
-import { AnyData, QueueItem } from './utils'
+import { QueueItem } from './utils'
 
 export interface PiwikProWindow {
   _paq?: QueueItem[]
-  dataLayer?: AnyData[]
   IS_DEBUG?: boolean
+  // data layer can have different names
+  [key: string]: unknown
 }
