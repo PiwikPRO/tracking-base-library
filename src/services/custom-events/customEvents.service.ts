@@ -12,12 +12,6 @@ export function trackEvent(
   value?: number,
   dimensions?: Dimensions
 ) {
-  const eventArguments = [
-    category,
-    action,
-    name,
-    value,
-    dimensions,
-  ]
+  const eventArguments = [category, action, name, value, dimensions]
   push([CUSTOM_EVENT_TRACK_EVENT.CUSTOM_EVENT, ...eventArguments])
 }
