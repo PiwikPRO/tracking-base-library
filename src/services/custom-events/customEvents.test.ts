@@ -3,7 +3,7 @@ import { push } from '../paqService/paq.service'
 import {
   CUSTOM_EVENT_TRACK_EVENT,
   PAQ_SERVICE_TRACK_EVENT,
-  TRACK_EVENT
+  TRACK_EVENT,
 } from '../../constants/track-event.constant'
 import { QueueItem, Dimensions } from '../../interfaces/utils'
 import { Tracker } from '../../interfaces/tracker'
@@ -15,7 +15,8 @@ describe('Tracking functions', () => {
     // Reset window._paq before each test
     mockPushFunction = jest.fn<number, [QueueItem]>()
     window._paq = {
-      push: (...args: Parameters<typeof mockPushFunction>) => mockPushFunction(...args)
+      push: (...args: Parameters<typeof mockPushFunction>) =>
+        mockPushFunction(...args),
     } as any
 
     // Mock console.log for IS_DEBUG cases
@@ -24,14 +25,14 @@ describe('Tracking functions', () => {
     // Mock location and document.title
     Object.defineProperty(window, 'location', {
       value: {
-        href: 'https://example.com/test'
+        href: 'https://example.com/test',
       },
-      writable: true
+      writable: true,
     })
 
     Object.defineProperty(document, 'title', {
       value: 'Test Page',
-      writable: true
+      writable: true,
     })
   })
 
@@ -48,11 +49,11 @@ describe('Tracking functions', () => {
 
       expect(mockPushFunction).toHaveBeenCalledWith([
         PAQ_SERVICE_TRACK_EVENT.SET_CUSTOM_URL,
-        'https://example.com/test'
+        'https://example.com/test',
       ] as QueueItem)
       expect(mockPushFunction).toHaveBeenCalledWith([
         PAQ_SERVICE_TRACK_EVENT.SET_DOCUMENT_TITLE,
-        'Test Page'
+        'Test Page',
       ] as QueueItem)
       expect(mockPushFunction).toHaveBeenCalledWith([
         CUSTOM_EVENT_TRACK_EVENT.CUSTOM_EVENT,
@@ -60,7 +61,7 @@ describe('Tracking functions', () => {
         action,
         undefined,
         undefined,
-        undefined
+        undefined,
       ] as QueueItem)
     })
 
@@ -75,11 +76,11 @@ describe('Tracking functions', () => {
 
       expect(mockPushFunction).toHaveBeenCalledWith([
         PAQ_SERVICE_TRACK_EVENT.SET_CUSTOM_URL,
-        'https://example.com/test'
+        'https://example.com/test',
       ] as QueueItem)
       expect(mockPushFunction).toHaveBeenCalledWith([
         PAQ_SERVICE_TRACK_EVENT.SET_DOCUMENT_TITLE,
-        'Test Page'
+        'Test Page',
       ] as QueueItem)
       expect(mockPushFunction).toHaveBeenCalledWith([
         CUSTOM_EVENT_TRACK_EVENT.CUSTOM_EVENT,
@@ -87,7 +88,7 @@ describe('Tracking functions', () => {
         action,
         name,
         value,
-        dimensions
+        dimensions,
       ] as QueueItem)
     })
 
@@ -100,11 +101,11 @@ describe('Tracking functions', () => {
 
       expect(mockPushFunction).toHaveBeenCalledWith([
         PAQ_SERVICE_TRACK_EVENT.SET_CUSTOM_URL,
-        'https://example.com/test'
+        'https://example.com/test',
       ] as QueueItem)
       expect(mockPushFunction).toHaveBeenCalledWith([
         PAQ_SERVICE_TRACK_EVENT.SET_DOCUMENT_TITLE,
-        'Test Page'
+        'Test Page',
       ] as QueueItem)
       expect(mockPushFunction).toHaveBeenCalledWith([
         CUSTOM_EVENT_TRACK_EVENT.CUSTOM_EVENT,
@@ -112,7 +113,7 @@ describe('Tracking functions', () => {
         action,
         undefined,
         undefined,
-        dimensions
+        dimensions,
       ] as QueueItem)
     })
   })
