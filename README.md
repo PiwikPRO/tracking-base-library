@@ -24,9 +24,9 @@ initialize()` method. `PiwikPro.initialize()` must be initialized using this fun
 In the arguments, pass your app ID and your account URL as parameters (marked 'container-id' and 'container-url' in the example below).
 
 ```ts
-    import PiwikPro from '@piwikpro/tracking-base-library';
-    
-    PiwikPro.initialize('container-id', 'container-url');
+import PiwikPro from '@piwikpro/tracking-base-library';
+
+PiwikPro.initialize('container-id', 'container-url');
 ```
 
 #### Setup with nonce
