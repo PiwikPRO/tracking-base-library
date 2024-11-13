@@ -1,6 +1,6 @@
 import { DataLayerEntry } from '../services/dataLayer/dataLayer.service'
 import * as DataLayer from '../services/dataLayer/dataLayer.service'
-import { init } from './index'
+import { getInitScript, init } from './index'
 
 afterEach(() => {
   const body = document.getElementsByTagName('body')[0]
@@ -105,5 +105,28 @@ describe('init', () => {
 
     // first entry is from init script
     expect((window[dataLayerName] as DataLayerEntry[])[1]).toEqual(event)
+  })
+})
+
+describe('getInitScript nonce handling', () => {
+  it('should include nonce in query parameters when nonce value is provided', () => {
+    const scriptContent = getInitScript({
+      containerId: 'test-container',
+      containerUrl: 'https://example.com',
+      dataLayerName: 'dataLayer',
+      nonceValue: 'test-nonce',
+    })
+
+    expect(scriptContent).toContain(',tags.nonce="test-nonce"')
+  })
+
+  it('should not include nonce in query parameters when nonce value is not provided', () => {
+    const scriptContent = getInitScript({
+      containerId: 'test-container',
+      containerUrl: 'https://example.com',
+      dataLayerName: 'dataLayer',
+    })
+
+    expect(scriptContent).not.toContain('tags.nonce=')
   })
 })
