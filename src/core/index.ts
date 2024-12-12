@@ -80,7 +80,7 @@ export function init(
   })
 
   const body: HTMLHeadElement = document.getElementsByTagName('body')[0]
-  body.appendChild(scriptEl)
+  body.prepend(scriptEl)
 }
 
 export function getInitScript({
