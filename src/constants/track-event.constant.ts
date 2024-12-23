@@ -73,6 +73,18 @@ export enum SITE_SEARCH_TRACK_EVENT {
   SEARCH = 'trackSiteSearch',
 }
 
+export enum CROSS_DOMAIN_TRACK_EVENT {
+  ENABLE_CROSS_DOMAIN_LINKING = 'enableCrossDomainLinking',
+  DISABLE_CROSS_DOMAIN_LINKING = 'disableCrossDomainLinking',
+  SET_CROSS_DOMAIN_LINKING_TIMEOUT = 'setCrossDomainLinkingTimeout',
+  IS_CROSS_DOMAIN_LINKING_ENABLED = 'isCrossDomainLinkingEnabled',
+  GET_CROSS_DOMAIN_LINKING_URL_PARAMETER = 'getCrossDomainLinkingUrlParameter',
+  CUSTOM_CROSS_DOMAIN_LINK_DECORATOR = 'customCrossDomainLinkDecorator',
+  CUSTOM_CROSS_DOMAIN_LINK_VISITOR_ID_GETTER = 'customCrossDomainLinkVisitorIdGetter',
+  SET_DOMAINS = 'setDomains',
+  GET_DOMAINS = 'getDomains',
+}
+
 export enum USER_MANAGEMENT_TRACK_EVENT {
   SET_USER_ID = 'setUserId',
   RESET_USER_ID = 'resetUserId',
@@ -99,6 +111,7 @@ export type TRACK_EVENT =
   | GOAL_CONVERSIONS_TRACK_EVENT
   | PAGE_VIEWS_TRACK_EVENT
   | SITE_SEARCH_TRACK_EVENT
+  | CROSS_DOMAIN_TRACK_EVENT
   | USER_MANAGEMENT_TRACK_EVENT
   | PAQ_SERVICE_TRACK_EVENT
   | ERROR_TRACKING_TRACK_EVENT
