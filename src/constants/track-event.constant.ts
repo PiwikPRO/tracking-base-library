@@ -81,8 +81,6 @@ export enum CROSS_DOMAIN_TRACK_EVENT {
   GET_CROSS_DOMAIN_LINKING_URL_PARAMETER = 'getCrossDomainLinkingUrlParameter',
   CUSTOM_CROSS_DOMAIN_LINK_DECORATOR = 'customCrossDomainLinkDecorator',
   CUSTOM_CROSS_DOMAIN_LINK_VISITOR_ID_GETTER = 'customCrossDomainLinkVisitorIdGetter',
-  SET_DOMAINS = 'setDomains',
-  GET_DOMAINS = 'getDomains',
 }
 
 export enum USER_MANAGEMENT_TRACK_EVENT {
@@ -100,6 +98,11 @@ export enum ERROR_TRACKING_TRACK_EVENT {
   TRACK_ERROR = 'trackError',
 }
 
+export enum CLIENT_CONFIG_TRACK_EVENT {
+  SET_DOMAINS = 'setDomains',
+  GET_DOMAINS = 'getDomains',
+}
+
 export type TRACK_EVENT =
   | ECOMMERCE_TRACK_EVENT
   | ECOMMERCE_V2_TRACK_EVENT
@@ -115,3 +118,4 @@ export type TRACK_EVENT =
   | USER_MANAGEMENT_TRACK_EVENT
   | PAQ_SERVICE_TRACK_EVENT
   | ERROR_TRACKING_TRACK_EVENT
+  | CLIENT_CONFIG_TRACK_EVENT

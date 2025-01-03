@@ -13,6 +13,7 @@ export * as UserManagement from './services/user-management/userManagement.servi
 export * as DataLayer from './services/dataLayer/dataLayer.service'
 export * as ErrorTracking from './services/error-tracking/errorTracking.service'
 export * as CrossDomain from './services/cross-domain/crossDomain.service'
+export * as ClientConfiguration from './services/client-configuration/clientConfiguration.service'
 
 export * from './interfaces/payment'
 export * from './interfaces/product'
