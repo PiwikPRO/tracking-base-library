@@ -75,3 +75,11 @@ export function getVisitorInfo(): Promise<VisitorInfo> {
     }
   })
 }
+
+export function setUserIsAnonymous(isAnonymous: boolean): void {
+  push([USER_MANAGEMENT_TRACK_EVENT.SET_USER_IS_ANONYMOUS, isAnonymous])
+}
+
+export function deanonymizeUser(): void {
+  push([USER_MANAGEMENT_TRACK_EVENT.DEANONYMIZE_USER])
+}

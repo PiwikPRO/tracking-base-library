@@ -14,7 +14,6 @@ export * as DataLayer from './services/dataLayer/dataLayer.service'
 export * as ErrorTracking from './services/error-tracking/errorTracking.service'
 export * as CrossDomainTracking from './services/cross-domain-tracking/crossDomainTracking.service'
 export * as ClientConfiguration from './services/client-configuration/clientConfiguration.service'
-export * as Anonymization from './services/anonymization/anonymization.service'
 
 export * from './interfaces/payment'
 export * from './interfaces/product'
