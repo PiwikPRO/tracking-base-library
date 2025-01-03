@@ -21,3 +21,11 @@ export function getDomains(): Promise<string[]> {
     }
   })
 }
+
+export function enableHeartBeatTimer(delays?: number[]): void {
+  push([CLIENT_CONFIG_TRACK_EVENT.ENABLE_HEARTBEAT_TIMER, delays])
+}
+
+export function disableHeartBeatTimer(): void {
+  push([CLIENT_CONFIG_TRACK_EVENT.DISABLE_HEARTBEAT_TIMER])
+}
