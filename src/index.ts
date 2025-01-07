@@ -12,7 +12,7 @@ export * as SiteSearch from './services/site-search/site-search.service'
 export * as UserManagement from './services/user-management/userManagement.service'
 export * as DataLayer from './services/dataLayer/dataLayer.service'
 export * as ErrorTracking from './services/error-tracking/errorTracking.service'
-export * as CrossDomain from './services/cross-domain/crossDomain.service'
+export * as CrossDomainTracking from './services/cross-domain-tracking/crossDomainTracking.service'
 export * as ClientConfiguration from './services/client-configuration/clientConfiguration.service'
 
 export * from './interfaces/payment'
