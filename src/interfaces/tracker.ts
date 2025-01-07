@@ -12,4 +12,7 @@ export type Tracker = {
   getUserId: () => string
   getVisitorId: () => string
   getVisitorInfo: () => VisitorInfo
+  getCrossDomainLinkingUrlParameter: () => string
+  isCrossDomainLinkingEnabled: () => boolean
+  getDomains: () => string[]
 }
