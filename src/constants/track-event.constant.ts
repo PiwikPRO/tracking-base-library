@@ -86,6 +86,8 @@ export enum CROSS_DOMAIN_TRACK_EVENT {
 export enum USER_MANAGEMENT_TRACK_EVENT {
   SET_USER_ID = 'setUserId',
   RESET_USER_ID = 'resetUserId',
+  SET_USER_IS_ANONYMOUS = 'setUserIsAnonymous',
+  DEANONYMIZE_USER = 'deanonymizeUser',
 }
 
 export enum PAQ_SERVICE_TRACK_EVENT {
