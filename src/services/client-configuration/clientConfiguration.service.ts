@@ -3,8 +3,7 @@ import { Tracker } from '../../interfaces/tracker'
 import { push } from '../paqService/paq.service'
 
 /**
- * Allows to define a list of internal domains or mobile app URIs.
- * Used in outlink tracking for determining whether a link is an outlink and in cross domain linking for determining which links should have visitor ID parameter injected.
+ * Allows to define a list of internal domains or mobile app URIs. Used in outlink tracking for determining whether a link is an outlink and in cross domain linking for determining which links should have visitor ID parameter injected.
  */
 export function setDomains(domains: string[]) {
   push([CLIENT_CONFIG_TRACK_EVENT.SET_DOMAINS, domains])

@@ -82,8 +82,7 @@ export function customCrossDomainLinkDecorator(decorator: LinkDecorator) {
 }
 
 /**
- * Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator.
- * The getter should return visitor ID extracted from page URL.
+ * Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator. The getter should return visitor ID extracted from page URL.
  */
 export function customCrossDomainLinkVisitorIdGetter(getter: VisitorIdGetter) {
   push([

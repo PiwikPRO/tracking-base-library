@@ -218,7 +218,7 @@ Returns list of internal domains (set with "setDomains" function and used in out
 
 ##### Defined in
 
-[services/client-configuration/clientConfiguration.service.ts:16](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/client-configuration/clientConfiguration.service.ts#L16)
+[services/client-configuration/clientConfiguration.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/client-configuration/clientConfiguration.service.ts#L15)
 
 ___
 
@@ -226,8 +226,7 @@ ___
 
 ▸ **setDomains**(`domains`): `void`
 
-Allows to define a list of internal domains or mobile app URIs.
-Used in outlink tracking for determining whether a link is an outlink and in cross domain linking for determining which links should have visitor ID parameter injected.
+Allows to define a list of internal domains or mobile app URIs. Used in outlink tracking for determining whether a link is an outlink and in cross domain linking for determining which links should have visitor ID parameter injected.
 
 ##### Parameters
 
@@ -241,7 +240,7 @@ Used in outlink tracking for determining whether a link is an outlink and in cro
 
 ##### Defined in
 
-[services/client-configuration/clientConfiguration.service.ts:9](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/client-configuration/clientConfiguration.service.ts#L9)
+[services/client-configuration/clientConfiguration.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/client-configuration/clientConfiguration.service.ts#L8)
 
 
 <a name="modulescontenttrackingmd"></a>
@@ -829,8 +828,7 @@ ___
 
 ▸ **customCrossDomainLinkVisitorIdGetter**(`getter`): `void`
 
-Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator.
-The getter should return visitor ID extracted from page URL.
+Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator. The getter should return visitor ID extracted from page URL.
 
 ##### Parameters
 
@@ -844,7 +842,7 @@ The getter should return visitor ID extracted from page URL.
 
 ##### Defined in
 
-[services/cross-domain-tracking/crossDomainTracking.service.ts:88](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L88)
+[services/cross-domain-tracking/crossDomainTracking.service.ts:87](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L87)
 
 ___
 
@@ -1473,7 +1471,7 @@ Disables sending heartbeats if they were previously enabled by "enableHeartBeatT
 
 ##### Defined in
 
-[services/heartbeat/heartbeat.service.ts:16](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L16)
+[services/heartbeat/heartbeat.service.ts:14](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L14)
 
 ___
 
@@ -1481,9 +1479,7 @@ ___
 
 ▸ **enableHeartBeatTimer**(`delays?`): `void`
 
-When a visitor is not producing any events (e.g. because they are reading an article or watching a video), we don’t know if they are still on the page.
-This might skew page statistics, e.g. time on page value.
-Heartbeat timer allows us to determine how much time visitors spend on a page by sending heartbeats to the Tracker as long as the page is in focus.
+When a visitor is not producing any events (e.g. because they are reading an article or watching a video), we don’t know if they are still on the page. This might skew page statistics, e.g. time on page value. Heartbeat timer allows us to determine how much time visitors spend on a page by sending heartbeats to the Tracker as long as the page is in focus.
 
 ##### Parameters
 
@@ -1497,7 +1493,7 @@ Heartbeat timer allows us to determine how much time visitors spend on a page by
 
 ##### Defined in
 
-[services/heartbeat/heartbeat.service.ts:9](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L9)
+[services/heartbeat/heartbeat.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L7)
 
 
 <a name="modulespageviewsmd"></a>
@@ -1588,8 +1584,7 @@ Tracks search requests on a website
 
 ▸ **deanonymizeUser**(): `void`
 
-Disables anonymous tracking and sends deanonymization event to the Tracker.
-Recommended method for disabling anonymous tracking.
+Disables anonymous tracking and sends deanonymization event to the Tracker. Recommended method for disabling anonymous tracking.
 
 ##### Returns
 
@@ -1597,7 +1592,7 @@ Recommended method for disabling anonymous tracking.
 
 ##### Defined in
 
-[services/user-management/userManagement.service.ts:91](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L91)
+[services/user-management/userManagement.service.ts:89](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L89)
 
 ___
 
@@ -1693,8 +1688,7 @@ ___
 
 ▸ **setUserIsAnonymous**(`isAnonymous`): `void`
 
-Enables or disables anonymous tracking (anonymous = without consent).
-The next emitted event will have anonymous mode set accordingly.
+Enables or disables anonymous tracking (anonymous = without consent). The next emitted event will have anonymous mode set accordingly.
 
 ##### Parameters
 
@@ -1708,7 +1702,7 @@ The next emitted event will have anonymous mode set accordingly.
 
 ##### Defined in
 
-[services/user-management/userManagement.service.ts:83](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L83)
+[services/user-management/userManagement.service.ts:82](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L82)
 
 
 <a name="modulesecommercemd"></a>

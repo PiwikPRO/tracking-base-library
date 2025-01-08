@@ -77,16 +77,14 @@ export function getVisitorInfo(): Promise<VisitorInfo> {
 }
 
 /**
- * Enables or disables anonymous tracking (anonymous = without consent).
- * The next emitted event will have anonymous mode set accordingly.
+ * Enables or disables anonymous tracking (anonymous = without consent). The next emitted event will have anonymous mode set accordingly.
  */
 export function setUserIsAnonymous(isAnonymous: boolean): void {
   push([USER_MANAGEMENT_TRACK_EVENT.SET_USER_IS_ANONYMOUS, isAnonymous])
 }
 
 /**
- * Disables anonymous tracking and sends deanonymization event to the Tracker.
- * Recommended method for disabling anonymous tracking.
+ * Disables anonymous tracking and sends deanonymization event to the Tracker. Recommended method for disabling anonymous tracking.
  */
 export function deanonymizeUser(): void {
   push([USER_MANAGEMENT_TRACK_EVENT.DEANONYMIZE_USER])
