@@ -2,6 +2,7 @@ import {
   ECOMMERCE_TRACK_EVENT,
   ECOMMERCE_V2_TRACK_EVENT,
 } from '../../constants/track-event.constant'
+import { EcommerceOptions } from '../../interfaces'
 
 import { PaymentInformation } from '../../interfaces/payment'
 import { Product } from '../../interfaces/product'
@@ -31,8 +32,11 @@ export function addEcommerceItem(
 /**
  * Tracks action of adding products to a cart
  */
-export function ecommerceAddToCart(products: Product[]) {
-  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_ADD_TO_CART, products])
+export function ecommerceAddToCart(
+  products: Product[],
+  options?: EcommerceOptions
+) {
+  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_ADD_TO_CART, products, options])
 }
 
 /**
@@ -45,8 +49,11 @@ export function removeEcommerceItem(productSKU: string) {
 /**
  * Tracks action of removing a products from a cart
  */
-export function ecommerceRemoveFromCart(products: Product[]) {
-  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_REMOVE_FROM_CART, products])
+export function ecommerceRemoveFromCart(
+  products: Product[],
+  options?: EcommerceOptions
+) {
+  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_REMOVE_FROM_CART, products, options])
 }
 
 /**
@@ -95,9 +102,15 @@ export function trackEcommerceOrder(
  */
 export function ecommerceOrder(
   products: Product[],
-  paymentInformation: PaymentInformation
+  paymentInformation: PaymentInformation,
+  options?: EcommerceOptions
 ) {
-  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_ORDER, products, paymentInformation])
+  push([
+    ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_ORDER,
+    products,
+    paymentInformation,
+    options,
+  ])
 }
 
 /**
@@ -112,16 +125,29 @@ export function trackEcommerceCartUpdate(cartAmount: number) {
  */
 export function ecommerceCartUpdate(
   products: Product[],
-  grandTotal: PaymentInformation['grandTotal']
+  grandTotal: PaymentInformation['grandTotal'],
+  options?: EcommerceOptions
 ) {
-  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_CART_UPDATE, products, grandTotal])
+  push([
+    ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_CART_UPDATE,
+    products,
+    grandTotal,
+    options,
+  ])
 }
 
 /**
  * Tracks action of viewing product page
  */
-export function ecommerceProductDetailView(products: Product[]) {
-  push([ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_PRODUCT_DETAIL_VIEW, products])
+export function ecommerceProductDetailView(
+  products: Product[],
+  options?: EcommerceOptions
+) {
+  push([
+    ECOMMERCE_V2_TRACK_EVENT.ECOMMERCE_PRODUCT_DETAIL_VIEW,
+    products,
+    options,
+  ])
 }
 
 /**

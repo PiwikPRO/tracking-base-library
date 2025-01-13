@@ -19,7 +19,7 @@ export * as Heartbeat from './services/heartbeat/heartbeat.service'
 export * from './interfaces/payment'
 export * from './interfaces/product'
 export * from './interfaces/visitorInfo'
-export type { Dimensions } from './interfaces/utils'
+export type { Dimensions, EcommerceOptions } from './interfaces/utils'
 export type { InitOptions } from './core'
 
 export default {

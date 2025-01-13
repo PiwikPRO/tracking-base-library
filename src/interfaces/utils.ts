@@ -11,3 +11,10 @@ export type AnyData = any
 export type Dimensions = Record<`dimension${number}`, string>
 
 export type QueueItem = [TRACK_EVENT, ...unknown[]] | [(this: Tracker) => void]
+
+export type EcommerceOptions = {
+  /**
+   * Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If not provided, the currency set in app settings will be used instead.
+   */
+  currencyCode?: string
+}
