@@ -1,4 +1,4 @@
-import { Dimensions } from './../../interfaces/utils'
+import { Dimensions, EcommerceOptions } from './../../interfaces/utils'
 import { GOAL_CONVERSIONS_TRACK_EVENT } from '../../constants/track-event.constant'
 import { push } from '../paqService/paq.service'
 
@@ -8,12 +8,15 @@ import { push } from '../paqService/paq.service'
 export function trackGoal(
   goalId: number | string,
   conversionValue: number,
-  dimensions?: Dimensions
+  dimensions?: Dimensions,
+  options?: EcommerceOptions
 ) {
   push([
     GOAL_CONVERSIONS_TRACK_EVENT.GOAL,
     goalId,
     conversionValue,
-    ...(dimensions ? [{ ...dimensions }] : []),
+    // prevent mutating user-provided object
+    dimensions ? { ...dimensions } : undefined,
+    options,
   ])
 }
