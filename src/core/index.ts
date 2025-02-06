@@ -27,21 +27,13 @@ function getConfig(nonceOrOptions?: string | InitOptions): InitOptions {
   return nonceOrOptions
 }
 
-export function init(
-  containerId: string,
-  containerUrl: string,
-  nonce?: string
-): void
-export function init(
-  containerId: string,
-  containerUrl: string,
-  options?: InitOptions
-): void
-export function init(
+export type Initialize = (
   containerId: string,
   containerUrl: string,
   nonceOrOptions?: string | InitOptions
-): void {
+) => void
+
+export const init: Initialize = (containerId, containerUrl, nonceOrOptions) => {
   if (!containerId) {
     console.error('Empty tracking code for Piwik Pro.')
     return

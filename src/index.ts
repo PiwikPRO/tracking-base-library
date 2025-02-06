@@ -15,12 +15,13 @@ export * as ErrorTracking from './services/error-tracking/errorTracking.service'
 export * as CrossDomainTracking from './services/cross-domain-tracking/crossDomainTracking.service'
 export * as ClientConfiguration from './services/client-configuration/clientConfiguration.service'
 export * as Heartbeat from './services/heartbeat/heartbeat.service'
+export * as Miscellaneous from './services/miscellaneous/miscellaneous.service'
 
 export * from './interfaces/payment'
 export * from './interfaces/product'
 export * from './interfaces/visitorInfo'
 export type { Dimensions } from './interfaces/utils'
-export type { InitOptions } from './core'
+export type { InitOptions, Initialize } from './core'
 
 export default {
   initialize: PiwikPro.init,
