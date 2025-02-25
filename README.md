@@ -1554,7 +1554,7 @@ Adds metadata about used framework
 
 ##### Defined in
 
-services/miscellaneous/miscellaneous.service.ts:7
+[services/miscellaneous/miscellaneous.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/miscellaneous/miscellaneous.service.ts#L7)
 
 
 <a name="modulespageviewsmd"></a>
