@@ -20,7 +20,7 @@ export * as Miscellaneous from './services/miscellaneous/miscellaneous.service'
 export * from './interfaces/payment'
 export * from './interfaces/product'
 export * from './interfaces/visitorInfo'
-export type { Dimensions } from './interfaces/utils'
+export type { Dimensions, EcommerceOptions } from './interfaces/utils'
 export type { InitOptions, Initialize } from './core'
 
 export default {

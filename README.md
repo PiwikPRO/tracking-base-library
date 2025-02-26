@@ -87,6 +87,7 @@ GoalConversions.trackGoal(1, 100);
 #### Type Aliases
 
 - [Dimensions](#dimensions)
+- [EcommerceOptions](#ecommerceoptions)
 - [InitOptions](#initoptions)
 - [Initialize](#initialize)
 - [PaymentInformation](#paymentinformation)
@@ -106,6 +107,22 @@ GoalConversions.trackGoal(1, 100);
 ##### Defined in
 
 [interfaces/utils.ts:11](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/utils.ts#L11)
+
+___
+
+#### EcommerceOptions
+
+Ƭ **EcommerceOptions**: `Object`
+
+##### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `currencyCode?` | `string` | Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If not provided, the currency set in app settings will be used instead. |
+
+##### Defined in
+
+[interfaces/utils.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/utils.ts#L15)
 
 ___
 
@@ -1454,7 +1471,7 @@ Such error request will still follow rules set for tracker, so it will be sent o
 
 #### trackGoal
 
-▸ **trackGoal**(`goalId`, `conversionValue`, `dimensions?`): `void`
+▸ **trackGoal**(`goalId`, `conversionValue`, `dimensions?`, `options?`): `void`
 
 Tracks manual goal conversion
 
@@ -1465,6 +1482,7 @@ Tracks manual goal conversion
 | `goalId` | `string` \| `number` |
 | `conversionValue` | `number` |
 | `dimensions?` | [`Dimensions`](#dimensions) |
+| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
 
 ##### Returns
 
@@ -1812,7 +1830,7 @@ Please use the ecommerceAddToCart instead.
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:14](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L14)
+[services/e-commerce/e-commerce.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L15)
 
 ___
 
@@ -1828,13 +1846,13 @@ ___
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:130](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L130)
+[services/e-commerce/e-commerce.service.ts:156](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L156)
 
 ___
 
 #### ecommerceAddToCart
 
-▸ **ecommerceAddToCart**(`products`): `void`
+▸ **ecommerceAddToCart**(`products`, `options?`): `void`
 
 Tracks action of adding products to a cart
 
@@ -1843,6 +1861,7 @@ Tracks action of adding products to a cart
 | Name | Type |
 | :------ | :------ |
 | `products` | [`Product`](#product)[] |
+| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
 
 ##### Returns
 
@@ -1850,13 +1869,13 @@ Tracks action of adding products to a cart
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:34](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L34)
+[services/e-commerce/e-commerce.service.ts:35](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L35)
 
 ___
 
 #### ecommerceCartUpdate
 
-▸ **ecommerceCartUpdate**(`products`, `grandTotal`): `void`
+▸ **ecommerceCartUpdate**(`products`, `grandTotal`, `options?`): `void`
 
 Tracks current state of a cart
 
@@ -1866,6 +1885,7 @@ Tracks current state of a cart
 | :------ | :------ |
 | `products` | [`Product`](#product)[] |
 | `grandTotal` | `string` \| `number` |
+| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
 
 ##### Returns
 
@@ -1873,13 +1893,13 @@ Tracks current state of a cart
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:113](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L113)
+[services/e-commerce/e-commerce.service.ts:126](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L126)
 
 ___
 
 #### ecommerceOrder
 
-▸ **ecommerceOrder**(`products`, `paymentInformation`): `void`
+▸ **ecommerceOrder**(`products`, `paymentInformation`, `options?`): `void`
 
 Tracks conversion, including products and payment details
 
@@ -1889,6 +1909,7 @@ Tracks conversion, including products and payment details
 | :------ | :------ |
 | `products` | [`Product`](#product)[] |
 | `paymentInformation` | [`PaymentInformation`](#paymentinformation) |
+| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
 
 ##### Returns
 
@@ -1896,13 +1917,13 @@ Tracks conversion, including products and payment details
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:96](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L96)
+[services/e-commerce/e-commerce.service.ts:103](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L103)
 
 ___
 
 #### ecommerceProductDetailView
 
-▸ **ecommerceProductDetailView**(`products`): `void`
+▸ **ecommerceProductDetailView**(`products`, `options?`): `void`
 
 Tracks action of viewing product page
 
@@ -1911,6 +1932,7 @@ Tracks action of viewing product page
 | Name | Type |
 | :------ | :------ |
 | `products` | [`Product`](#product)[] |
+| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
 
 ##### Returns
 
@@ -1918,13 +1940,13 @@ Tracks action of viewing product page
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:123](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L123)
+[services/e-commerce/e-commerce.service.ts:142](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L142)
 
 ___
 
 #### ecommerceRemoveFromCart
 
-▸ **ecommerceRemoveFromCart**(`products`): `void`
+▸ **ecommerceRemoveFromCart**(`products`, `options?`): `void`
 
 Tracks action of removing a products from a cart
 
@@ -1933,6 +1955,7 @@ Tracks action of removing a products from a cart
 | Name | Type |
 | :------ | :------ |
 | `products` | [`Product`](#product)[] |
+| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
 
 ##### Returns
 
@@ -1940,7 +1963,7 @@ Tracks action of removing a products from a cart
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:48](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L48)
+[services/e-commerce/e-commerce.service.ts:52](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L52)
 
 ___
 
@@ -1956,7 +1979,7 @@ ___
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:55](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L55)
+[services/e-commerce/e-commerce.service.ts:62](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L62)
 
 ___
 
@@ -1980,7 +2003,7 @@ Please use the ecommerceRemoveFromCart instead.
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:41](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L41)
+[services/e-commerce/e-commerce.service.ts:45](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L45)
 
 ___
 
@@ -2005,7 +2028,7 @@ ___
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:137](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L137)
+[services/e-commerce/e-commerce.service.ts:163](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L163)
 
 ___
 
@@ -2029,7 +2052,7 @@ Please use the ecommerceCartUpdate instead.
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:106](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L106)
+[services/e-commerce/e-commerce.service.ts:119](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L119)
 
 ___
 
@@ -2058,4 +2081,4 @@ Please use the ecommerceOrder instead.
 
 ##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:74](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L74)
+[services/e-commerce/e-commerce.service.ts:81](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L81)
