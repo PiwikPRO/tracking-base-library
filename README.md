@@ -78,6 +78,7 @@ GoalConversions.trackGoal(1, 100);
 - [ErrorTracking](#moduleserrortrackingmd)
 - [GoalConversions](#modulesgoalconversionsmd)
 - [Heartbeat](#modulesheartbeatmd)
+- [Miscellaneous](#modulesmiscellaneousmd)
 - [PageViews](#modulespageviewsmd)
 - [SiteSearch](#modulessitesearchmd)
 - [UserManagement](#modulesusermanagementmd)
@@ -88,6 +89,7 @@ GoalConversions.trackGoal(1, 100);
 - [Dimensions](#dimensions)
 - [EcommerceOptions](#ecommerceoptions)
 - [InitOptions](#initoptions)
+- [Initialize](#initialize)
 - [PaymentInformation](#paymentinformation)
 - [Product](#product)
 - [VisitorInfo](#visitorinfo)
@@ -138,6 +140,32 @@ ___
 ##### Defined in
 
 [core/index.ts:4](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L4)
+
+___
+
+#### Initialize
+
+Ƭ **Initialize**: (`containerId`: `string`, `containerUrl`: `string`, `nonceOrOptions?`: `string` \| [`InitOptions`](#initoptions)) => `void`
+
+##### Type declaration
+
+▸ (`containerId`, `containerUrl`, `nonceOrOptions?`): `void`
+
+###### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `containerId` | `string` |
+| `containerUrl` | `string` |
+| `nonceOrOptions?` | `string` \| [`InitOptions`](#initoptions) |
+
+###### Returns
+
+`void`
+
+##### Defined in
+
+[core/index.ts:30](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L30)
 
 ___
 
@@ -204,11 +232,11 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `getInitScript` | (`__namedParameters`: \{ `containerId`: `string` ; `containerUrl`: `string` ; `dataLayerName?`: `string` ; `nonceValue?`: `string`  }) => `string` |
-| `initialize` | (`containerId`: `string`, `containerUrl`: `string`, `nonce?`: `string`) => `void`(`containerId`: `string`, `containerUrl`: `string`, `options?`: [`InitOptions`](#initoptions)) => `void` |
+| `initialize` | [`Initialize`](#initialize) |
 
 ##### Defined in
 
-[index.ts:25](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L25)
+[index.ts:26](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L26)
 
 
 <a name="modulesclientconfigurationmd"></a>
@@ -1512,6 +1540,39 @@ When a visitor is not producing any events (e.g. because they are reading an art
 ##### Defined in
 
 [services/heartbeat/heartbeat.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L7)
+
+
+<a name="modulesmiscellaneousmd"></a>
+
+
+## Miscellaneous
+
+### Table of contents
+
+
+- [setTrackingSourceProvider](#settrackingsourceprovider)
+
+
+#### setTrackingSourceProvider
+
+▸ **setTrackingSourceProvider**(`provider`, `version`): `void`
+
+Adds metadata about used framework
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `provider` | `string` |
+| `version` | `string` |
+
+##### Returns
+
+`void`
+
+##### Defined in
+
+[services/miscellaneous/miscellaneous.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/miscellaneous/miscellaneous.service.ts#L7)
 
 
 <a name="modulespageviewsmd"></a>
