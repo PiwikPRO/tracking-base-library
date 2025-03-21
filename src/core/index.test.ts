@@ -131,7 +131,7 @@ describe('getInitScript', () => {
   })
 
   it('should handle trailing slash in containerUrl', () => {
-    // One slash is always added in getInitScript, thats why wrong value is `${containerUrl}//`
+    // One slash is always added in getInitScript, thats why not expected value is `${containerUrl}//`
     const expectContainerUrl = `https://example.com/`
     const notExpectContainerUrl = `https://example.com//`
 
