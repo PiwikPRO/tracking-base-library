@@ -108,7 +108,7 @@ describe('init', () => {
   })
 })
 
-describe('getInitScript nonce handling', () => {
+describe('getInitScript', () => {
   it('should include nonce in query parameters when nonce value is provided', () => {
     const scriptContent = getInitScript({
       containerId: 'test-container',
@@ -128,5 +128,19 @@ describe('getInitScript nonce handling', () => {
     })
 
     expect(scriptContent).not.toContain('tags.nonce=')
+  })
+
+  it('should handle trailing slash in containerUrl', () => {
+    // One slash is always added in getInitScript, thats why wrong value is `${containerUrl}//`
+    const expectContainerUrl = `https://example.com/`
+    const notExpectContainerUrl = `https://example.com//`
+
+    const scriptContent = getInitScript({
+      containerUrl: 'https://example.com/',
+      containerId: 'test-container',
+    })
+
+    expect(scriptContent).toContain(expectContainerUrl)
+    expect(scriptContent).not.toContain(notExpectContainerUrl)
   })
 })

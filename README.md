@@ -139,7 +139,7 @@ ___
 
 ##### Defined in
 
-[core/index.ts:4](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L4)
+[core/index.ts:5](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L5)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 ##### Defined in
 
-[core/index.ts:30](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L30)
+[core/index.ts:31](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L31)
 
 ___
 
