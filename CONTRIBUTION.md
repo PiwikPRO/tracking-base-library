@@ -45,10 +45,6 @@ We follow the [conventional commits specification](https://www.conventionalcommi
 
 We use [TypeScript](https://www.typescriptlang.org/) for type checking, [ESLint](https://eslint.org/) with [Prettier](https://prettier.io/) for linting and formatting the code, and [Jest](https://jestjs.io/) for testing.
 
-### CI
-
-Our CI verifies that the formatting is correct, tests are passing, documentation is up to date when a PR is opened.
-
 ### Sending a pull request
 
 > **Working on your first pull request?** You can learn how from this _free_ series: [How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github).
@@ -60,3 +56,5 @@ When you're sending a pull request:
 - Review the documentation to make sure it looks good.
 - Follow the pull request template when opening a pull request.
 - For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
+
+After opening a pull request our CI will verify that the formatting is correct, tests are passing and documentation is up to date.
