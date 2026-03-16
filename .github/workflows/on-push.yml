@@ -35,3 +35,14 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # Check documentation
+      - name: Generate documentation
+        run: npm run build:docs
+
+      - name: Check for documentation changes
+        run: |
+          if [[ -n $(git status --porcelain | grep "README.md") ]]; then
+            echo "Documentation is not up to date!"
+            exit 1
+          fi
