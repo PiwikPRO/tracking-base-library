@@ -42,13 +42,6 @@ export function setLinkClasses(classes: string[]) {
 }
 
 /**
- * Sets a list of class names that indicate whether a list is a download and not an outlink
- */
-export function setDownloadClasses(classes: string[]) {
-  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_DOWNLOAD_CLASSES, classes])
-}
-
-/**
  * Overwrites the list of file extensions indicating that a link is a download
  */
 export function setDownloadExtensions(extensions: string[]) {
@@ -107,4 +100,44 @@ export function getLinkTrackingTimer(): Promise<number> {
  */
 export function setIgnoreClasses(classes: string[]) {
   push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_IGNORE_CLASSES, classes])
+}
+
+/**
+ * Returns list of download classes (CSS classes that indicate a link is a download)
+ */
+export function getDownloadClasses(): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    try {
+      push([
+        function (this: Tracker) {
+          resolve(this.getDownloadClasses())
+        },
+      ])
+    } catch (e) {
+      if (e instanceof ReferenceError) {
+        reject(e)
+      }
+    }
+  })
+}
+
+/**
+ * Sets a list of class names that indicate whether a list is a download and not an outlink
+ */
+export function setDownloadClasses(classes: string[]) {
+  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_DOWNLOAD_CLASSES, classes])
+}
+
+/**
+ * Adds new classes to the download classes list
+ */
+export function addDownloadClasses(classes: string[]) {
+  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.ADD_DOWNLOAD_CLASSES, classes])
+}
+
+/**
+ * Removes classes from the download classes list
+ */
+export function removeDownloadClasses(classes: string[]) {
+  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.REMOVE_DOWNLOAD_CLASSES, classes])
 }

@@ -55,6 +55,8 @@ export enum DOWNLOAD_AND_OUTLINK_TRACK_EVENT {
   SET_IGNORE_CLASSES = 'setIgnoreClasses',
   SET_LINK_CLASSES = 'setLinkClasses',
   SET_DOWNLOAD_CLASSES = 'setDownloadClasses',
+  ADD_DOWNLOAD_CLASSES = 'addDownloadClasses',
+  REMOVE_DOWNLOAD_CLASSES = 'removeDownloadClasses',
   SET_DOWNLOAD_EXTENSIONS = 'setDownloadExtensions',
   ADD_DOWNLOAD_EXTENSIONS = 'addDownloadExtensions',
   REMOVE_DOWNLOAD_EXTENSIONS = 'removeDownloadExtensions',
