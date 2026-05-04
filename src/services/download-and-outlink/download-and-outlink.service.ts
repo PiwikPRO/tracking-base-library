@@ -108,3 +108,37 @@ export function getLinkTrackingTimer(): Promise<number> {
 export function setIgnoreClasses(classes: string[]) {
   push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_IGNORE_CLASSES, classes])
 }
+
+
+/**
+ * Returns list of download classes (CSS classes that indicate a link is a download)
+ */
+export function getDownloadClasses(): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    try {
+      push([
+        function (this: Tracker) {
+          resolve(this.getDownloadClasses())
+        },
+      ])
+    } catch (e) {
+      if (e instanceof ReferenceError) {
+        reject(e)
+      }
+    }
+  })
+}
+
+/**
+ * Adds new classes to the download classes list
+ */
+export function addDownloadClasses(classes: string[]) {
+  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.ADD_DOWNLOAD_CLASSES, classes])
+}
+
+/**
+ * Removes classes from the download classes list
+ */
+export function removeDownloadClasses(classes: string[]) {
+  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.REMOVE_DOWNLOAD_CLASSES, classes])
+}

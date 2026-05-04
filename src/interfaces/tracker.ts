@@ -15,4 +15,5 @@ export type Tracker = {
   getCrossDomainLinkingUrlParameter: () => string
   isCrossDomainLinkingEnabled: () => boolean
   getDomains: () => string[]
+  getDownloadClasses: () => string[]
 }
