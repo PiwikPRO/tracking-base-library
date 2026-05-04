@@ -102,7 +102,6 @@ export function setIgnoreClasses(classes: string[]) {
   push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_IGNORE_CLASSES, classes])
 }
 
-
 /**
  * Returns list of download classes (CSS classes that indicate a link is a download)
  */
