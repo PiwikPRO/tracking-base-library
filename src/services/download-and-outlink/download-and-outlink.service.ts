@@ -42,13 +42,6 @@ export function setLinkClasses(classes: string[]) {
 }
 
 /**
- * Sets a list of class names that indicate whether a list is a download and not an outlink
- */
-export function setDownloadClasses(classes: string[]) {
-  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_DOWNLOAD_CLASSES, classes])
-}
-
-/**
  * Overwrites the list of file extensions indicating that a link is a download
  */
 export function setDownloadExtensions(extensions: string[]) {
@@ -127,6 +120,13 @@ export function getDownloadClasses(): Promise<string[]> {
       }
     }
   })
+}
+
+/**
+ * Sets a list of class names that indicate whether a list is a download and not an outlink
+ */
+export function setDownloadClasses(classes: string[]) {
+  push([DOWNLOAD_AND_OUTLINK_TRACK_EVENT.SET_DOWNLOAD_CLASSES, classes])
 }
 
 /**
