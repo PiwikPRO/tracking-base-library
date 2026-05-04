@@ -1166,9 +1166,12 @@ ___
 ### Table of contents
 
 
+- [addDownloadClasses](#adddownloadclasses)
 - [addDownloadExtensions](#adddownloadextensions)
 - [enableLinkTracking](#enablelinktracking)
+- [getDownloadClasses](#getdownloadclasses)
 - [getLinkTrackingTimer](#getlinktrackingtimer)
+- [removeDownloadClasses](#removedownloadclasses)
 - [removeDownloadExtensions](#removedownloadextensions)
 - [setDownloadClasses](#setdownloadclasses)
 - [setDownloadExtensions](#setdownloadextensions)
@@ -1177,6 +1180,28 @@ ___
 - [setLinkTrackingTimer](#setlinktrackingtimer)
 - [trackLink](#tracklink)
 
+
+#### addDownloadClasses
+
+▸ **addDownloadClasses**(`classes`): `void`
+
+Adds new classes to the download classes list
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `classes` | `string`[] |
+
+##### Returns
+
+`void`
+
+##### Defined in
+
+[services/download-and-outlink/download-and-outlink.service.ts:134](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L134)
+
+___
 
 #### addDownloadExtensions
 
@@ -1196,7 +1221,7 @@ Adds new extensions to the download extensions list
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:61](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L61)
+[services/download-and-outlink/download-and-outlink.service.ts:54](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L54)
 
 ___
 
@@ -1225,6 +1250,22 @@ to a downloadable file creates a download event
 
 ___
 
+#### getDownloadClasses
+
+▸ **getDownloadClasses**(): `Promise`\<`string`[]\>
+
+Returns list of download classes (CSS classes that indicate a link is a download)
+
+##### Returns
+
+`Promise`\<`string`[]\>
+
+##### Defined in
+
+[services/download-and-outlink/download-and-outlink.service.ts:108](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L108)
+
+___
+
 #### getLinkTrackingTimer
 
 ▸ **getLinkTrackingTimer**(): `Promise`\<`number`\>
@@ -1237,7 +1278,29 @@ Returns lock/wait time after a request set by setLinkTrackingTimer
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:89](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L89)
+[services/download-and-outlink/download-and-outlink.service.ts:82](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L82)
+
+___
+
+#### removeDownloadClasses
+
+▸ **removeDownloadClasses**(`classes`): `void`
+
+Removes classes from the download classes list
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `classes` | `string`[] |
+
+##### Returns
+
+`void`
+
+##### Defined in
+
+[services/download-and-outlink/download-and-outlink.service.ts:141](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L141)
 
 ___
 
@@ -1259,7 +1322,7 @@ Removes extensions from the download extensions list
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:68](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L68)
+[services/download-and-outlink/download-and-outlink.service.ts:61](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L61)
 
 ___
 
@@ -1281,7 +1344,7 @@ Sets a list of class names that indicate whether a list is a download and not an
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:47](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L47)
+[services/download-and-outlink/download-and-outlink.service.ts:127](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L127)
 
 ___
 
@@ -1303,7 +1366,7 @@ Overwrites the list of file extensions indicating that a link is a download
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:54](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L54)
+[services/download-and-outlink/download-and-outlink.service.ts:47](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L47)
 
 ___
 
@@ -1325,7 +1388,7 @@ Set a list of class names that indicate a link should not be tracked
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:108](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L108)
+[services/download-and-outlink/download-and-outlink.service.ts:101](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L101)
 
 ___
 
@@ -1373,7 +1436,7 @@ reach the Collecting & Processing Pipeline
 
 ##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:82](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L82)
+[services/download-and-outlink/download-and-outlink.service.ts:75](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L75)
 
 ___
 
