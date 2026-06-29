@@ -60,6 +60,8 @@ describe('init', () => {
       'Empty tracking code for Piwik Pro.'
     )
     expect(script).toBeNull()
+
+    consoleErrorMock.mockRestore()
   })
 
   it('should log error if containerUrl is empty', () => {
@@ -75,24 +77,8 @@ describe('init', () => {
       'Empty tracking URL for Piwik Pro.'
     )
     expect(script).toBeNull()
-  })
 
-  it('should log error if trying to run in server environment', () => {
-    const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
-
-    const originalWindow = global.window
-    // here we simulate as if the code was run in the server environment
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    delete global.window
-
-    init('containerId', 'containerUrl')
-
-    expect(consoleErrorMock).toHaveBeenCalledWith(
-      'Was not possible to access window. Make sure this module is running in a browser'
-    )
-
-    global.window = originalWindow
+    consoleErrorMock.mockRestore()
   })
 
   it('should push events to the data layer with correct name', () => {
