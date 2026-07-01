@@ -225,13 +225,13 @@ ___
 
 #### default
 
-• **default**: `Object`
+• `Const` **default**: `Object`
 
 ##### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `getInitScript` | (`__namedParameters`: \{ `containerId`: `string` ; `containerUrl`: `string` ; `dataLayerName?`: `string` ; `nonceValue?`: `string`  }) => `string` |
+| `getInitScript` | typeof `getInitScript` |
 | `initialize` | [`Initialize`](#initialize) |
 
 ##### Defined in

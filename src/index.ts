@@ -1,4 +1,4 @@
-import * as PiwikPro from './core'
+import { init, getInitScript, type Initialize, type InitOptions } from './core'
 
 export * as PageViews from './services/pageViews/pageViews.service'
 export * as CustomEvent from './services/custom-events/customEvents.service'
@@ -21,9 +21,14 @@ export * from './interfaces/payment'
 export * from './interfaces/product'
 export * from './interfaces/visitorInfo'
 export type { Dimensions, EcommerceOptions } from './interfaces/utils'
-export type { InitOptions, Initialize } from './core'
+export type { Initialize, InitOptions }
 
-export default {
-  initialize: PiwikPro.init,
-  getInitScript: PiwikPro.getInitScript,
+const defaultExport: {
+  initialize: Initialize
+  getInitScript: typeof getInitScript
+} = {
+  initialize: init,
+  getInitScript,
 }
+
+export default defaultExport
