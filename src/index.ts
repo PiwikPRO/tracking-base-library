@@ -1,4 +1,10 @@
-import { init, getInitScript, type Initialize, type InitOptions } from './core'
+import {
+  init,
+  getInitScript,
+  type Initialize,
+  type InitOptions,
+  type GetInitScript,
+} from './core'
 
 export * as PageViews from './services/pageViews/pageViews.service'
 export * as CustomEvent from './services/custom-events/customEvents.service'
@@ -21,11 +27,11 @@ export * from './interfaces/payment'
 export * from './interfaces/product'
 export * from './interfaces/visitorInfo'
 export type { Dimensions, EcommerceOptions } from './interfaces/utils'
-export type { Initialize, InitOptions }
+export type { Initialize, InitOptions, GetInitScript }
 
 const defaultExport: {
   initialize: Initialize
-  getInitScript: typeof getInitScript
+  getInitScript: GetInitScript
 } = {
   initialize: init,
   getInitScript,

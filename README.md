@@ -88,6 +88,7 @@ GoalConversions.trackGoal(1, 100);
 
 - [Dimensions](#dimensions)
 - [EcommerceOptions](#ecommerceoptions)
+- [GetInitScript](#getinitscript)
 - [InitOptions](#initoptions)
 - [Initialize](#initialize)
 - [PaymentInformation](#paymentinformation)
@@ -123,6 +124,30 @@ ___
 ##### Defined in
 
 [interfaces/utils.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/utils.ts#L15)
+
+___
+
+#### GetInitScript
+
+Ƭ **GetInitScript**: (`params`: `GetInitScriptParams`) => `string`
+
+##### Type declaration
+
+▸ (`params`): `string`
+
+###### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | `GetInitScriptParams` |
+
+###### Returns
+
+`string`
+
+##### Defined in
+
+[core/index.ts:86](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L86)
 
 ___
 
@@ -231,12 +256,12 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `getInitScript` | typeof `getInitScript` |
+| `getInitScript` | [`GetInitScript`](#getinitscript) |
 | `initialize` | [`Initialize`](#initialize) |
 
 ##### Defined in
 
-[index.ts:26](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L26)
+[index.ts:32](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L32)
 
 
 <a name="modulesclientconfigurationmd"></a>
