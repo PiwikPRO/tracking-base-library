@@ -76,17 +76,21 @@ export const init: Initialize = (containerId, containerUrl, nonceOrOptions) => {
   body.prepend(scriptEl)
 }
 
+export type GetInitScriptParams = {
+  containerId: string
+  containerUrl: string
+  dataLayerName?: string
+  nonceValue?: string
+}
+
+export type GetInitScript = (params: GetInitScriptParams) => string
+
 export function getInitScript({
   containerId,
   containerUrl,
   dataLayerName,
   nonceValue,
-}: {
-  containerId: string
-  containerUrl: string
-  dataLayerName?: string
-  nonceValue?: string
-}) {
+}: GetInitScriptParams) {
   const dataLayer = dataLayerName || DEFAULT_DATA_LAYER_NAME
   const nonceTag = nonceValue ? `,tags.nonce="${nonceValue}"` : ''
   const sanitizedContainerUrl = sanitizeUrl(containerUrl)
