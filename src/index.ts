@@ -1,4 +1,10 @@
-import { init, getInitScript, type Initialize, type InitOptions, type GetInitScript } from './core'
+import {
+  init,
+  getInitScript,
+  type Initialize,
+  type InitOptions,
+  type GetInitScript,
+} from './core'
 
 export * as PageViews from './services/pageViews/pageViews.service'
 export * as CustomEvent from './services/custom-events/customEvents.service'
