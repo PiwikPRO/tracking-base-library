@@ -1,7 +1,6 @@
 
 <a name="readmemd"></a>
 
-
 # Piwik PRO Tracking Base Library
 
 Dedicated Piwik PRO library that helps with implementing Piwik PRO Tag Manager and the Piwik PRO tracking client in JavaScript browser applications.
@@ -59,1389 +58,1291 @@ GoalConversions.trackGoal(1, 100);
 ```
 
 
-<a name="modulesmd"></a>
+<a name="globalsmd"></a>
+
+
+***
 
 
 
 ### Table of contents
 
-#### Namespaces
-
-- [ClientConfiguration](#modulesclientconfigurationmd)
-- [ContentTracking](#modulescontenttrackingmd)
-- [CookieManagement](#modulescookiemanagementmd)
-- [CrossDomainTracking](#modulescrossdomaintrackingmd)
-- [CustomDimensions](#modulescustomdimensionsmd)
-- [CustomEvent](#modulescustomeventmd)
-- [DataLayer](#modulesdatalayermd)
-- [DownloadAndOutlink](#modulesdownloadandoutlinkmd)
-- [ErrorTracking](#moduleserrortrackingmd)
-- [GoalConversions](#modulesgoalconversionsmd)
-- [Heartbeat](#modulesheartbeatmd)
-- [Miscellaneous](#modulesmiscellaneousmd)
-- [PageViews](#modulespageviewsmd)
-- [SiteSearch](#modulessitesearchmd)
-- [UserManagement](#modulesusermanagementmd)
-- [eCommerce](#modulesecommercemd)
-
-#### Type Aliases
-
-- [Dimensions](#dimensions)
-- [EcommerceOptions](#ecommerceoptions)
-- [GetInitScript](#getinitscript)
-- [InitOptions](#initoptions)
-- [Initialize](#initialize)
-- [PaymentInformation](#paymentinformation)
-- [Product](#product)
-- [VisitorInfo](#visitorinfo)
-
-#### Variables
-
-- [default](#default)
+- [ClientConfiguration](#namespacesclientconfigurationreadmemd)
+- [ContentTracking](#namespacescontenttrackingreadmemd)
+- [CookieManagement](#namespacescookiemanagementreadmemd)
+- [CrossDomainTracking](#namespacescrossdomaintrackingreadmemd)
+- [CustomDimensions](#namespacescustomdimensionsreadmemd)
+- [CustomEvent](#namespacescustomeventreadmemd)
+- [DataLayer](#namespacesdatalayerreadmemd)
+- [DownloadAndOutlink](#namespacesdownloadandoutlinkreadmemd)
+- [eCommerce](#namespacesecommercereadmemd)
+- [ErrorTracking](#namespaceserrortrackingreadmemd)
+- [GoalConversions](#namespacesgoalconversionsreadmemd)
+- [Heartbeat](#namespacesheartbeatreadmemd)
+- [Miscellaneous](#namespacesmiscellaneousreadmemd)
+- [PageViews](#namespacespageviewsreadmemd)
+- [SiteSearch](#namespacessitesearchreadmemd)
+- [UserManagement](#namespacesusermanagementreadmemd)
 
 ### Type Aliases
 
-#### Dimensions
-
-Ƭ **Dimensions**: `Record`\<\`dimension$\{number}\`, `string`\>
-
-##### Defined in
-
-[interfaces/utils.ts:11](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/utils.ts#L11)
-
-___
-
-#### EcommerceOptions
-
-Ƭ **EcommerceOptions**: `Object`
-
-##### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `currencyCode?` | `string` | Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If not provided, the currency set in app settings will be used instead. |
-
-##### Defined in
-
-[interfaces/utils.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/utils.ts#L15)
-
-___
-
-#### GetInitScript
-
-Ƭ **GetInitScript**: (`params`: `GetInitScriptParams`) => `string`
-
-##### Type declaration
-
-▸ (`params`): `string`
-
-###### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `params` | `GetInitScriptParams` |
-
-###### Returns
-
-`string`
-
-##### Defined in
-
-[core/index.ts:86](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L86)
-
-___
-
-#### InitOptions
-
-Ƭ **InitOptions**: `Object`
-
-##### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `dataLayerName?` | `string` | Defaults to 'dataLayer' |
-| `nonce?` | `string` | - |
-
-##### Defined in
-
-[core/index.ts:5](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L5)
-
-___
-
-#### Initialize
-
-Ƭ **Initialize**: (`containerId`: `string`, `containerUrl`: `string`, `nonceOrOptions?`: `string` \| [`InitOptions`](#initoptions)) => `void`
-
-##### Type declaration
-
-▸ (`containerId`, `containerUrl`, `nonceOrOptions?`): `void`
-
-###### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `containerId` | `string` |
-| `containerUrl` | `string` |
-| `nonceOrOptions?` | `string` \| [`InitOptions`](#initoptions) |
-
-###### Returns
-
-`void`
-
-##### Defined in
-
-[core/index.ts:31](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/core/index.ts#L31)
-
-___
-
-#### PaymentInformation
-
-Ƭ **PaymentInformation**: `Object`
-
-##### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `discount?` | `number` \| `string` |
-| `grandTotal` | `number` \| `string` |
-| `orderId` | `string` |
-| `shipping?` | `number` \| `string` |
-| `subTotal?` | `number` \| `string` |
-| `tax?` | `number` \| `string` |
-
-##### Defined in
-
-[interfaces/payment.ts:1](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/payment.ts#L1)
-
-___
-
-#### Product
-
-Ƭ **Product**: `Object`
-
-##### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `brand?` | `string` |
-| `category?` | `LimitedArrayFiveStrings` |
-| `customDimensions?` | `Record`\<`number`, `string`\> |
-| `name?` | `string` |
-| `price?` | `number` |
-| `quantity?` | `number` |
-| `sku` | `string` |
-| `variant?` | `string` |
-
-##### Defined in
-
-[interfaces/product.ts:3](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/product.ts#L3)
-
-___
-
-#### VisitorInfo
-
-Ƭ **VisitorInfo**: [isNew: "0" \| "1", visitorId: string, firstVisitTS: number, previousVisitCount: string \| number, currentVisitTS: number, lastVisitTS: number \| "", lastEcommerceOrderTS: number \| ""]
-
-##### Defined in
-
-[interfaces/visitorInfo.ts:1](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/interfaces/visitorInfo.ts#L1)
+- [Dimensions](#type-aliasesdimensionsmd)
+- [EcommerceOptions](#type-aliasesecommerceoptionsmd)
+- [GetInitScript](#type-aliasesgetinitscriptmd)
+- [Initialize](#type-aliasesinitializemd)
+- [InitOptions](#type-aliasesinitoptionsmd)
+- [PaymentInformation](#type-aliasespaymentinformationmd)
+- [Product](#type-aliasesproductmd)
+- [VisitorInfo](#type-aliasesvisitorinfomd)
 
 ### Variables
 
-#### default
-
-• `Const` **default**: `Object`
-
-##### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `getInitScript` | [`GetInitScript`](#getinitscript) |
-| `initialize` | [`Initialize`](#initialize) |
-
-##### Defined in
-
-[index.ts:32](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/index.ts#L32)
+- [default](#variablesdefaultmd)
 
 
-<a name="modulesclientconfigurationmd"></a>
+<a name="namespacesclientconfigurationreadmemd"></a>
+
+
+***
 
 
 ## ClientConfiguration
 
-### Table of contents
+
+- [getDomains](#namespacesclientconfigurationfunctionsgetdomainsmd)
+- [setDomains](#namespacesclientconfigurationfunctionssetdomainsmd)
 
 
-- [getDomains](#getdomains)
-- [setDomains](#setdomains)
+<a name="namespacesclientconfigurationfunctionsgetdomainsmd"></a>
 
 
-#### getDomains
+***
 
-▸ **getDomains**(): `Promise`\<`string`[]\>
+
+## getDomains()
+
+> **getDomains**(): `Promise`\<`string`[]\>
 
 Returns list of internal domains (set with "setDomains" function and used in outlink tracking).
 
-##### Returns
+### Returns
 
 `Promise`\<`string`[]\>
 
-##### Defined in
 
-[services/client-configuration/clientConfiguration.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/client-configuration/clientConfiguration.service.ts#L15)
+<a name="namespacesclientconfigurationfunctionssetdomainsmd"></a>
 
-___
 
-#### setDomains
+***
 
-▸ **setDomains**(`domains`): `void`
+
+## setDomains()
+
+> **setDomains**(`domains`): `void`
 
 Allows to define a list of internal domains or mobile app URIs. Used in outlink tracking for determining whether a link is an outlink and in cross domain linking for determining which links should have visitor ID parameter injected.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `domains` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/client-configuration/clientConfiguration.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/client-configuration/clientConfiguration.service.ts#L8)
+<a name="namespacescontenttrackingreadmemd"></a>
 
 
-<a name="modulescontenttrackingmd"></a>
+***
 
 
 ## ContentTracking
 
-### Table of contents
+
+- [logAllContentBlocksOnPage](#namespacescontenttrackingfunctionslogallcontentblocksonpagemd)
+- [trackAllContentImpressions](#namespacescontenttrackingfunctionstrackallcontentimpressionsmd)
+- [trackContentImpression](#namespacescontenttrackingfunctionstrackcontentimpressionmd)
+- [trackContentImpressionsWithinNode](#namespacescontenttrackingfunctionstrackcontentimpressionswithinnodemd)
+- [trackContentInteraction](#namespacescontenttrackingfunctionstrackcontentinteractionmd)
+- [trackContentInteractionNode](#namespacescontenttrackingfunctionstrackcontentinteractionnodemd)
+- [trackVisibleContentImpressions](#namespacescontenttrackingfunctionstrackvisiblecontentimpressionsmd)
 
 
-- [logAllContentBlocksOnPage](#logallcontentblocksonpage)
-- [trackAllContentImpressions](#trackallcontentimpressions)
-- [trackContentImpression](#trackcontentimpression)
-- [trackContentImpressionsWithinNode](#trackcontentimpressionswithinnode)
-- [trackContentInteraction](#trackcontentinteraction)
-- [trackContentInteractionNode](#trackcontentinteractionnode)
-- [trackVisibleContentImpressions](#trackvisiblecontentimpressions)
+<a name="namespacescontenttrackingfunctionslogallcontentblocksonpagemd"></a>
 
 
-#### logAllContentBlocksOnPage
+***
 
-▸ **logAllContentBlocksOnPage**(): `void`
+
+## logAllContentBlocksOnPage()
+
+> **logAllContentBlocksOnPage**(): `void`
 
 Print all content blocks to the console for debugging purposes
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:49](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L49)
+<a name="namespacescontenttrackingfunctionstrackallcontentimpressionsmd"></a>
 
-___
 
-#### trackAllContentImpressions
+***
 
-▸ **trackAllContentImpressions**(): `void`
+
+## trackAllContentImpressions()
+
+> **trackAllContentImpressions**(): `void`
 
 Scans the entire DOM for content blocks and tracks impressions after all page
 elements load. It does not send duplicates on repeated calls unless
 trackPageView was called in between trackAllContentImpressions invocations
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:9](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L9)
+<a name="namespacescontenttrackingfunctionstrackcontentimpressionmd"></a>
 
-___
 
-#### trackContentImpression
+***
 
-▸ **trackContentImpression**(`contentName`, `contentPiece`, `contentTarget`): `void`
 
-##### Parameters
+## trackContentImpression()
 
-| Name | Type |
-| :------ | :------ |
+> **trackContentImpression**(`contentName`, `contentPiece`, `contentTarget`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `contentName` | `string` |
 | `contentPiece` | `string` |
 | `contentTarget` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:33](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L33)
+<a name="namespacescontenttrackingfunctionstrackcontentimpressionswithinnodemd"></a>
 
-___
 
-#### trackContentImpressionsWithinNode
+***
 
-▸ **trackContentImpressionsWithinNode**(`domNode`): `void`
 
-##### Parameters
+## trackContentImpressionsWithinNode()
 
-| Name | Type |
-| :------ | :------ |
+> **trackContentImpressionsWithinNode**(`domNode`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `domNode` | `Node` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:29](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L29)
+<a name="namespacescontenttrackingfunctionstrackcontentinteractionmd"></a>
 
-___
 
-#### trackContentInteraction
+***
 
-▸ **trackContentInteraction**(`contentInteraction`, `contentName`, `contentPiece`, `contentTarget`): `void`
+
+## trackContentInteraction()
+
+> **trackContentInteraction**(`contentInteraction`, `contentName`, `contentPiece`, `contentTarget`): `void`
 
 Tracks manual content interaction event
 
-##### Parameters
+### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
 | `contentInteraction` | `string` | Type of interaction (e.g. "click") |
 | `contentName` | `string` | Name of a content block |
 | `contentPiece` | `string` | Name of the content that was displayed (e.g. link to an image) |
 | `contentTarget` | `string` | Where the content leads to (e.g. URL of some external website) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:76](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L76)
+<a name="namespacescontenttrackingfunctionstrackcontentinteractionnodemd"></a>
 
-___
 
-#### trackContentInteractionNode
+***
 
-▸ **trackContentInteractionNode**(`domNode`, `contentInteraction?`): `void`
+
+## trackContentInteractionNode()
+
+> **trackContentInteractionNode**(`domNode`, `contentInteraction?`): `void`
 
 Tracks interaction with a block in domNode. Can be called from code placed in onclick attribute
 
-##### Parameters
+### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
 | `domNode` | `Node` | `undefined` | Node marked as content block or containing content blocks. If content block can’t be found, nothing will tracked. |
 | `contentInteraction` | `string` | `'Unknown'` | Name of interaction (e.g. "click") |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:58](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L58)
+<a name="namespacescontenttrackingfunctionstrackvisiblecontentimpressionsmd"></a>
 
-___
 
-#### trackVisibleContentImpressions
+***
 
-▸ **trackVisibleContentImpressions**(`checkOnScroll?`, `watchInterval?`): `void`
+
+## trackVisibleContentImpressions()
+
+> **trackVisibleContentImpressions**(`checkOnScroll?`, `watchInterval?`): `void`
 
 Scans DOM for all visible content blocks and tracks impressions
 
-##### Parameters
+### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
 | `checkOnScroll` | `boolean` | `true` | Whether to scan for visible content on scroll event |
 | `watchInterval` | `number` | `750` | Delay, in milliseconds, between scans for new visible content. Periodic checks can be disabled by passing 0 |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/content-tracking/contentTracking.service.ts:18](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/content-tracking/contentTracking.service.ts#L18)
+<a name="namespacescookiemanagementreadmemd"></a>
 
 
-<a name="modulescookiemanagementmd"></a>
+***
 
 
 ## CookieManagement
 
-### Table of contents
+
+- [deleteCookies](#namespacescookiemanagementfunctionsdeletecookiesmd)
+- [disableCookies](#namespacescookiemanagementfunctionsdisablecookiesmd)
+- [enableCookies](#namespacescookiemanagementfunctionsenablecookiesmd)
+- [getConfigVisitorCookieTimeout](#namespacescookiemanagementfunctionsgetconfigvisitorcookietimeoutmd)
+- [getCookieDomain](#namespacescookiemanagementfunctionsgetcookiedomainmd)
+- [getCookiePath](#namespacescookiemanagementfunctionsgetcookiepathmd)
+- [getSessionCookieTimeout](#namespacescookiemanagementfunctionsgetsessioncookietimeoutmd)
+- [hasCookies](#namespacescookiemanagementfunctionshascookiesmd)
+- [setCookieDomain](#namespacescookiemanagementfunctionssetcookiedomainmd)
+- [setCookieNamePrefix](#namespacescookiemanagementfunctionssetcookienameprefixmd)
+- [setCookiePath](#namespacescookiemanagementfunctionssetcookiepathmd)
+- [setReferralCookieTimeout](#namespacescookiemanagementfunctionssetreferralcookietimeoutmd)
+- [setSecureCookie](#namespacescookiemanagementfunctionssetsecurecookiemd)
+- [setSessionCookieTimeout](#namespacescookiemanagementfunctionssetsessioncookietimeoutmd)
+- [setVisitorCookieTimeout](#namespacescookiemanagementfunctionssetvisitorcookietimeoutmd)
+- [setVisitorIdCookie](#namespacescookiemanagementfunctionssetvisitoridcookiemd)
 
 
-- [deleteCookies](#deletecookies)
-- [disableCookies](#disablecookies)
-- [enableCookies](#enablecookies)
-- [getConfigVisitorCookieTimeout](#getconfigvisitorcookietimeout)
-- [getCookieDomain](#getcookiedomain)
-- [getCookiePath](#getcookiepath)
-- [getSessionCookieTimeout](#getsessioncookietimeout)
-- [hasCookies](#hascookies)
-- [setCookieDomain](#setcookiedomain)
-- [setCookieNamePrefix](#setcookienameprefix)
-- [setCookiePath](#setcookiepath)
-- [setReferralCookieTimeout](#setreferralcookietimeout)
-- [setSecureCookie](#setsecurecookie)
-- [setSessionCookieTimeout](#setsessioncookietimeout)
-- [setVisitorCookieTimeout](#setvisitorcookietimeout)
-- [setVisitorIdCookie](#setvisitoridcookie)
+<a name="namespacescookiemanagementfunctionsdeletecookiesmd"></a>
 
 
-#### deleteCookies
+***
 
-▸ **deleteCookies**(): `void`
+
+## deleteCookies()
+
+> **deleteCookies**(): `void`
 
 Deletes existing tracking cookies on the next page view
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:22](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L22)
+<a name="namespacescookiemanagementfunctionsdisablecookiesmd"></a>
 
-___
 
-#### disableCookies
+***
 
-▸ **disableCookies**(): `void`
+
+## disableCookies()
+
+> **disableCookies**(): `void`
 
 Disables all first party cookies. Existing cookies will be deleted in the next page view
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L8)
+<a name="namespacescookiemanagementfunctionsenablecookiesmd"></a>
 
-___
 
-#### enableCookies
+***
 
-▸ **enableCookies**(): `void`
+
+## enableCookies()
+
+> **enableCookies**(): `void`
 
 Enables all first party cookies. Cookies will be created on the next tracking request
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L15)
+<a name="namespacescookiemanagementfunctionsgetconfigvisitorcookietimeoutmd"></a>
 
-___
 
-#### getConfigVisitorCookieTimeout
+***
 
-▸ **getConfigVisitorCookieTimeout**(): `Promise`\<`number`\>
+
+## getConfigVisitorCookieTimeout()
+
+> **getConfigVisitorCookieTimeout**(): `Promise`\<`number`\>
 
 Returns expiration time of visitor cookies (in milliseconds)
 
-##### Returns
+### Returns
 
 `Promise`\<`number`\>
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:86](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L86)
+<a name="namespacescookiemanagementfunctionsgetcookiedomainmd"></a>
 
-___
 
-#### getCookieDomain
+***
 
-▸ **getCookieDomain**(): `Promise`\<`string`\>
+
+## getCookieDomain()
+
+> **getCookieDomain**(): `Promise`\<`string`\>
 
 Returns domain of the analytics tracking cookies (set with setCookieDomain()).
 
-##### Returns
+### Returns
 
 `Promise`\<`string`\>
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:48](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L48)
+<a name="namespacescookiemanagementfunctionsgetcookiepathmd"></a>
 
-___
 
-#### getCookiePath
+***
 
-▸ **getCookiePath**(): `Promise`\<`string`\>
+
+## getCookiePath()
+
+> **getCookiePath**(): `Promise`\<`string`\>
 
 Returns the analytics tracking cookies path
 
-##### Returns
+### Returns
 
 `Promise`\<`string`\>
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:67](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L67)
+<a name="namespacescookiemanagementfunctionsgetsessioncookietimeoutmd"></a>
 
-___
 
-#### getSessionCookieTimeout
+***
 
-▸ **getSessionCookieTimeout**(): `Promise`\<`number`\>
+
+## getSessionCookieTimeout()
+
+> **getSessionCookieTimeout**(): `Promise`\<`number`\>
 
 Returns expiration time of session cookies
 
-##### Returns
+### Returns
 
 `Promise`\<`number`\>
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:112](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L112)
+<a name="namespacescookiemanagementfunctionshascookiesmd"></a>
 
-___
 
-#### hasCookies
+***
 
-▸ **hasCookies**(): `Promise`\<`boolean`\>
+
+## hasCookies()
+
+> **hasCookies**(): `Promise`\<`boolean`\>
 
 Returns true if cookies are enabled in this browser
 
-##### Returns
+### Returns
 
 `Promise`\<`boolean`\>
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:29](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L29)
+<a name="namespacescookiemanagementfunctionssetcookiedomainmd"></a>
 
-___
 
-#### setCookieDomain
+***
 
-▸ **setCookieDomain**(`domain`): `void`
+
+## setCookieDomain()
+
+> **setCookieDomain**(`domain`): `void`
 
 Sets the domain for the analytics tracking cookies
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `domain` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:138](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L138)
+<a name="namespacescookiemanagementfunctionssetcookienameprefixmd"></a>
 
-___
 
-#### setCookieNamePrefix
+***
 
-▸ **setCookieNamePrefix**(`prefix`): `void`
+
+## setCookieNamePrefix()
+
+> **setCookieNamePrefix**(`prefix`): `void`
 
 Sets the prefix for analytics tracking cookies. Default is "_pk_".
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `prefix` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:131](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L131)
+<a name="namespacescookiemanagementfunctionssetcookiepathmd"></a>
 
-___
 
-#### setCookiePath
+***
 
-▸ **setCookiePath**(`path`): `void`
+
+## setCookiePath()
+
+> **setCookiePath**(`path`): `void`
 
 Sets the analytics tracking cookies path
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `path` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:145](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L145)
+<a name="namespacescookiemanagementfunctionssetreferralcookietimeoutmd"></a>
 
-___
 
-#### setReferralCookieTimeout
+***
 
-▸ **setReferralCookieTimeout**(`seconds`): `void`
+
+## setReferralCookieTimeout()
+
+> **setReferralCookieTimeout**(`seconds`): `void`
 
 Sets the expiration time of referral cookies
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `seconds` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:105](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L105)
+<a name="namespacescookiemanagementfunctionssetsecurecookiemd"></a>
 
-___
 
-#### setSecureCookie
+***
 
-▸ **setSecureCookie**(`secure`): `void`
+
+## setSecureCookie()
+
+> **setSecureCookie**(`secure`): `void`
 
 Toggles the secure cookie flag on all first party cookies (if you are using HTTPS)
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `secure` | `boolean` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:152](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L152)
+<a name="namespacescookiemanagementfunctionssetsessioncookietimeoutmd"></a>
 
-___
 
-#### setSessionCookieTimeout
+***
 
-▸ **setSessionCookieTimeout**(`seconds`): `void`
+
+## setSessionCookieTimeout()
+
+> **setSessionCookieTimeout**(`seconds`): `void`
 
 Sets the expiration time of session cookies
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `seconds` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:166](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L166)
+<a name="namespacescookiemanagementfunctionssetvisitorcookietimeoutmd"></a>
 
-___
 
-#### setVisitorCookieTimeout
+***
 
-▸ **setVisitorCookieTimeout**(`seconds`): `void`
+
+## setVisitorCookieTimeout()
+
+> **setVisitorCookieTimeout**(`seconds`): `void`
 
 Sets the expiration time of visitor cookies
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `seconds` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:159](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L159)
+<a name="namespacescookiemanagementfunctionssetvisitoridcookiemd"></a>
 
-___
 
-#### setVisitorIdCookie
+***
 
-▸ **setVisitorIdCookie**(): `void`
+
+## setVisitorIdCookie()
+
+> **setVisitorIdCookie**(): `void`
 
 Sets cookie containing [analytics ID](https://developers.piwik.pro/en/latest/glossary.html#term-analytics-id) in browser
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/cookie-management/cookieManagement.service.ts:173](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cookie-management/cookieManagement.service.ts#L173)
+<a name="namespacescrossdomaintrackingreadmemd"></a>
 
 
-<a name="modulescrossdomaintrackingmd"></a>
+***
 
 
 ## CrossDomainTracking
 
-### Table of contents
-
-#### Type Aliases
-
-- [LinkDecorator](#linkdecorator)
-- [VisitorIdGetter](#visitoridgetter)
-
-
-- [customCrossDomainLinkDecorator](#customcrossdomainlinkdecorator)
-- [customCrossDomainLinkVisitorIdGetter](#customcrossdomainlinkvisitoridgetter)
-- [disableCrossDomainLinking](#disablecrossdomainlinking)
-- [enableCrossDomainLinking](#enablecrossdomainlinking)
-- [getCrossDomainLinkingUrlParameter](#getcrossdomainlinkingurlparameter)
-- [isCrossDomainLinkingEnabled](#iscrossdomainlinkingenabled)
-- [setCrossDomainLinkingTimeout](#setcrossdomainlinkingtimeout)
-
 ### Type Aliases
 
-#### LinkDecorator
+- [LinkDecorator](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd)
+- [VisitorIdGetter](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd)
 
-Ƭ **LinkDecorator**: (`url`: `string`, `value`: `string`, `name`: `string`) => `string` \| ``null``
 
-##### Type declaration
+- [customCrossDomainLinkDecorator](#namespacescrossdomaintrackingfunctionscustomcrossdomainlinkdecoratormd)
+- [customCrossDomainLinkVisitorIdGetter](#namespacescrossdomaintrackingfunctionscustomcrossdomainlinkvisitoridgettermd)
+- [disableCrossDomainLinking](#namespacescrossdomaintrackingfunctionsdisablecrossdomainlinkingmd)
+- [enableCrossDomainLinking](#namespacescrossdomaintrackingfunctionsenablecrossdomainlinkingmd)
+- [getCrossDomainLinkingUrlParameter](#namespacescrossdomaintrackingfunctionsgetcrossdomainlinkingurlparametermd)
+- [isCrossDomainLinkingEnabled](#namespacescrossdomaintrackingfunctionsiscrossdomainlinkingenabledmd)
+- [setCrossDomainLinkingTimeout](#namespacescrossdomaintrackingfunctionssetcrossdomainlinkingtimeoutmd)
 
-▸ (`url`, `value`, `name`): `string` \| ``null``
 
-###### Parameters
+<a name="namespacescrossdomaintrackingfunctionscustomcrossdomainlinkdecoratormd"></a>
 
-| Name | Type |
-| :------ | :------ |
+
+***
+
+
+## customCrossDomainLinkDecorator()
+
+> **customCrossDomainLinkDecorator**(`decorator`): `void`
+
+Sets custom cross domains URL decorator for injecting visitor ID into URLs. Used when cross domain linking is enabled.
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `decorator` | [`LinkDecorator`](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd) |
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionscustomcrossdomainlinkvisitoridgettermd"></a>
+
+
+***
+
+
+## customCrossDomainLinkVisitorIdGetter()
+
+> **customCrossDomainLinkVisitorIdGetter**(`getter`): `void`
+
+Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator. The getter should return visitor ID extracted from page URL.
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `getter` | [`VisitorIdGetter`](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd) |
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionsdisablecrossdomainlinkingmd"></a>
+
+
+***
+
+
+## disableCrossDomainLinking()
+
+> **disableCrossDomainLinking**(): `void`
+
+Disables cross domain linking.
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionsenablecrossdomainlinkingmd"></a>
+
+
+***
+
+
+## enableCrossDomainLinking()
+
+> **enableCrossDomainLinking**(): `void`
+
+Enables cross domain linking. Visitors across domains configured with "setDomains" function will be linked by passing visitor ID parameter in links.
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionsgetcrossdomainlinkingurlparametermd"></a>
+
+
+***
+
+
+## getCrossDomainLinkingUrlParameter()
+
+> **getCrossDomainLinkingUrlParameter**(): `Promise`\<`string`\>
+
+Returns the name of a cross domain URL parameter (query parameter by default) holding visitor ID. This is "pk_vid" by default.
+
+### Returns
+
+`Promise`\<`string`\>
+
+
+<a name="namespacescrossdomaintrackingfunctionsiscrossdomainlinkingenabledmd"></a>
+
+
+***
+
+
+## isCrossDomainLinkingEnabled()
+
+> **isCrossDomainLinkingEnabled**(): `Promise`\<`boolean`\>
+
+Returns boolean telling whether cross domain linking is enabled.
+
+### Returns
+
+`Promise`\<`boolean`\>
+
+
+<a name="namespacescrossdomaintrackingfunctionssetcrossdomainlinkingtimeoutmd"></a>
+
+
+***
+
+
+## setCrossDomainLinkingTimeout()
+
+> **setCrossDomainLinkingTimeout**(`timeout`): `void`
+
+Changes the time in which two visits across domains will be linked. The default timeout is 180 seconds (3 minutes).
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `timeout` | `number` |
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingtype-aliaseslinkdecoratormd"></a>
+
+
+***
+
+
+## LinkDecorator
+
+> **LinkDecorator** = (`url`, `value`, `name`) => `string` \| `null`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `url` | `string` |
 | `value` | `string` |
 | `name` | `string` |
 
-###### Returns
+### Returns
 
-`string` \| ``null``
+`string` \| `null`
 
-##### Defined in
 
-[services/cross-domain-tracking/crossDomainTracking.service.ts:5](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L5)
+<a name="namespacescrossdomaintrackingtype-aliasesvisitoridgettermd"></a>
 
-___
 
-#### VisitorIdGetter
+***
 
-Ƭ **VisitorIdGetter**: (`url`: `string`, `name`: `string`) => `string`
 
-##### Type declaration
+## VisitorIdGetter
 
-▸ (`url`, `name`): `string`
+> **VisitorIdGetter** = (`url`, `name`) => `string`
 
-###### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `url` | `string` |
 | `name` | `string` |
 
-###### Returns
+### Returns
 
 `string`
 
-##### Defined in
 
-[services/cross-domain-tracking/crossDomainTracking.service.ts:11](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L11)
+<a name="namespacescustomdimensionsreadmemd"></a>
 
 
-#### customCrossDomainLinkDecorator
-
-▸ **customCrossDomainLinkDecorator**(`decorator`): `void`
-
-Sets custom cross domains URL decorator for injecting visitor ID into URLs. Used when cross domain linking is enabled.
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `decorator` | [`LinkDecorator`](#linkdecorator) |
-
-##### Returns
-
-`void`
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:75](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L75)
-
-___
-
-#### customCrossDomainLinkVisitorIdGetter
-
-▸ **customCrossDomainLinkVisitorIdGetter**(`getter`): `void`
-
-Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator. The getter should return visitor ID extracted from page URL.
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `getter` | [`VisitorIdGetter`](#visitoridgetter) |
-
-##### Returns
-
-`void`
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:87](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L87)
-
-___
-
-#### disableCrossDomainLinking
-
-▸ **disableCrossDomainLinking**(): `void`
-
-Disables cross domain linking.
-
-##### Returns
-
-`void`
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:23](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L23)
-
-___
-
-#### enableCrossDomainLinking
-
-▸ **enableCrossDomainLinking**(): `void`
-
-Enables cross domain linking. Visitors across domains configured with "setDomains" function will be linked by passing visitor ID parameter in links.
-
-##### Returns
-
-`void`
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:16](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L16)
-
-___
-
-#### getCrossDomainLinkingUrlParameter
-
-▸ **getCrossDomainLinkingUrlParameter**(): `Promise`\<`string`\>
-
-Returns the name of a cross domain URL parameter (query parameter by default) holding visitor ID. This is "pk_vid" by default.
-
-##### Returns
-
-`Promise`\<`string`\>
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:56](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L56)
-
-___
-
-#### isCrossDomainLinkingEnabled
-
-▸ **isCrossDomainLinkingEnabled**(): `Promise`\<`boolean`\>
-
-Returns boolean telling whether cross domain linking is enabled.
-
-##### Returns
-
-`Promise`\<`boolean`\>
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:37](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L37)
-
-___
-
-#### setCrossDomainLinkingTimeout
-
-▸ **setCrossDomainLinkingTimeout**(`timeout`): `void`
-
-Changes the time in which two visits across domains will be linked. The default timeout is 180 seconds (3 minutes).
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `timeout` | `number` |
-
-##### Returns
-
-`void`
-
-##### Defined in
-
-[services/cross-domain-tracking/crossDomainTracking.service.ts:30](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/cross-domain-tracking/crossDomainTracking.service.ts#L30)
-
-
-<a name="modulescustomdimensionsmd"></a>
+***
 
 
 ## CustomDimensions
 
-### Table of contents
+
+- [deleteCustomDimension](#namespacescustomdimensionsfunctionsdeletecustomdimensionmd)
+- [getCustomDimensionValue](#namespacescustomdimensionsfunctionsgetcustomdimensionvaluemd)
+- [setCustomDimensionValue](#namespacescustomdimensionsfunctionssetcustomdimensionvaluemd)
 
 
-- [deleteCustomDimension](#deletecustomdimension)
-- [getCustomDimensionValue](#getcustomdimensionvalue)
-- [setCustomDimensionValue](#setcustomdimensionvalue)
+<a name="namespacescustomdimensionsfunctionsdeletecustomdimensionmd"></a>
 
 
-#### deleteCustomDimension
+***
 
-▸ **deleteCustomDimension**(`customDimensionId`): `void`
+
+## deleteCustomDimension()
+
+> **deleteCustomDimension**(`customDimensionId`): `void`
 
 Removes a custom dimension with the specified ID.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `customDimensionId` | `string` \| `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/custom-dimensions/customDimensions.service.ts:21](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/custom-dimensions/customDimensions.service.ts#L21)
+<a name="namespacescustomdimensionsfunctionsgetcustomdimensionvaluemd"></a>
 
-___
 
-#### getCustomDimensionValue
+***
 
-▸ **getCustomDimensionValue**(`customDimensionId`): `Promise`\<`string` \| `undefined`\>
+
+## getCustomDimensionValue()
+
+> **getCustomDimensionValue**(`customDimensionId`): `Promise`\<`string` \| `undefined`\>
 
 Returns the value of a custom dimension with the specified ID.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `customDimensionId` | `string` \| `number` |
 
-##### Returns
+### Returns
 
 `Promise`\<`string` \| `undefined`\>
 
-##### Defined in
 
-[services/custom-dimensions/customDimensions.service.ts:30](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/custom-dimensions/customDimensions.service.ts#L30)
+<a name="namespacescustomdimensionsfunctionssetcustomdimensionvaluemd"></a>
 
-___
 
-#### setCustomDimensionValue
+***
 
-▸ **setCustomDimensionValue**(`customDimensionId`, `customDimensionValue`): `void`
+
+## setCustomDimensionValue()
+
+> **setCustomDimensionValue**(`customDimensionId`, `customDimensionValue`): `void`
 
 Sets a custom dimension value to be used later.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `customDimensionId` | `string` \| `number` |
 | `customDimensionValue` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/custom-dimensions/customDimensions.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/custom-dimensions/customDimensions.service.ts#L8)
+<a name="namespacescustomeventreadmemd"></a>
 
 
-<a name="modulescustomeventmd"></a>
+***
 
 
 ## CustomEvent
 
-### Table of contents
+
+- [trackEvent](#namespacescustomeventfunctionstrackeventmd)
 
 
-- [trackEvent](#trackevent)
+<a name="namespacescustomeventfunctionstrackeventmd"></a>
 
 
-#### trackEvent
+***
 
-▸ **trackEvent**(`category`, `action`, `name?`, `value?`, `dimensions?`): `void`
+
+## trackEvent()
+
+> **trackEvent**(`category`, `action`, `name?`, `value?`, `dimensions?`): `void`
 
 Tracks a custom event, e.g. when a visitor interacts with the page
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `category` | `string` |
 | `action` | `string` |
 | `name?` | `string` |
 | `value?` | `number` |
-| `dimensions?` | [`Dimensions`](#dimensions) |
+| `dimensions?` | [`Dimensions`](#type-aliasesdimensionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/custom-events/customEvents.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/custom-events/customEvents.service.ts#L8)
+<a name="namespacesdatalayerreadmemd"></a>
 
 
-<a name="modulesdatalayermd"></a>
+***
 
 
 ## DataLayer
 
-### Table of contents
-
-#### Type Aliases
-
-- [DataLayerEntry](#datalayerentry)
-
-
-- [push](#push)
-- [setDataLayerName](#setdatalayername)
-
 ### Type Aliases
 
-#### DataLayerEntry
-
-Ƭ **DataLayerEntry**: `Record`\<`string`, `AnyData`\>
-
-##### Defined in
-
-[services/dataLayer/dataLayer.service.ts:11](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/dataLayer/dataLayer.service.ts#L11)
+- [DataLayerEntry](#namespacesdatalayertype-aliasesdatalayerentrymd)
 
 
-#### push
+- [push](#namespacesdatalayerfunctionspushmd)
+- [setDataLayerName](#namespacesdatalayerfunctionssetdatalayernamemd)
 
-▸ **push**(`data`): `number`
+
+<a name="namespacesdatalayerfunctionspushmd"></a>
+
+
+***
+
+
+## push()
+
+> **push**(`data`): `number`
 
 Adds entry to a data layer
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `data` | [`DataLayerEntry`](#datalayerentry) |
+| Parameter | Type |
+| ------ | ------ |
+| `data` | [`DataLayerEntry`](#namespacesdatalayertype-aliasesdatalayerentrymd) |
 
-##### Returns
+### Returns
 
 `number`
 
-##### Defined in
 
-[services/dataLayer/dataLayer.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/dataLayer/dataLayer.service.ts#L15)
+<a name="namespacesdatalayerfunctionssetdatalayernamemd"></a>
 
-___
 
-#### setDataLayerName
+***
 
-▸ **setDataLayerName**(`name`): `void`
 
-##### Parameters
+## setDataLayerName()
 
-| Name | Type |
-| :------ | :------ |
+> **setDataLayerName**(`name`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `name` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/dataLayer/dataLayer.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/dataLayer/dataLayer.service.ts#L7)
+<a name="namespacesdatalayertype-aliasesdatalayerentrymd"></a>
 
 
-<a name="modulesdownloadandoutlinkmd"></a>
+***
+
+
+## DataLayerEntry
+
+> **DataLayerEntry** = `Record`\<`string`, `AnyData`\>
+
+
+<a name="namespacesdownloadandoutlinkreadmemd"></a>
+
+
+***
 
 
 ## DownloadAndOutlink
 
-### Table of contents
+
+- [addDownloadClasses](#namespacesdownloadandoutlinkfunctionsadddownloadclassesmd)
+- [addDownloadExtensions](#namespacesdownloadandoutlinkfunctionsadddownloadextensionsmd)
+- [enableLinkTracking](#namespacesdownloadandoutlinkfunctionsenablelinktrackingmd)
+- [getDownloadClasses](#namespacesdownloadandoutlinkfunctionsgetdownloadclassesmd)
+- [getLinkTrackingTimer](#namespacesdownloadandoutlinkfunctionsgetlinktrackingtimermd)
+- [removeDownloadClasses](#namespacesdownloadandoutlinkfunctionsremovedownloadclassesmd)
+- [removeDownloadExtensions](#namespacesdownloadandoutlinkfunctionsremovedownloadextensionsmd)
+- [setDownloadClasses](#namespacesdownloadandoutlinkfunctionssetdownloadclassesmd)
+- [setDownloadExtensions](#namespacesdownloadandoutlinkfunctionssetdownloadextensionsmd)
+- [setIgnoreClasses](#namespacesdownloadandoutlinkfunctionssetignoreclassesmd)
+- [setLinkClasses](#namespacesdownloadandoutlinkfunctionssetlinkclassesmd)
+- [setLinkTrackingTimer](#namespacesdownloadandoutlinkfunctionssetlinktrackingtimermd)
+- [trackLink](#namespacesdownloadandoutlinkfunctionstracklinkmd)
 
 
-- [addDownloadClasses](#adddownloadclasses)
-- [addDownloadExtensions](#adddownloadextensions)
-- [enableLinkTracking](#enablelinktracking)
-- [getDownloadClasses](#getdownloadclasses)
-- [getLinkTrackingTimer](#getlinktrackingtimer)
-- [removeDownloadClasses](#removedownloadclasses)
-- [removeDownloadExtensions](#removedownloadextensions)
-- [setDownloadClasses](#setdownloadclasses)
-- [setDownloadExtensions](#setdownloadextensions)
-- [setIgnoreClasses](#setignoreclasses)
-- [setLinkClasses](#setlinkclasses)
-- [setLinkTrackingTimer](#setlinktrackingtimer)
-- [trackLink](#tracklink)
+<a name="namespacesdownloadandoutlinkfunctionsadddownloadclassesmd"></a>
 
 
-#### addDownloadClasses
+***
 
-▸ **addDownloadClasses**(`classes`): `void`
+
+## addDownloadClasses()
+
+> **addDownloadClasses**(`classes`): `void`
 
 Adds new classes to the download classes list
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `classes` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:134](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L134)
+<a name="namespacesdownloadandoutlinkfunctionsadddownloadextensionsmd"></a>
 
-___
 
-#### addDownloadExtensions
+***
 
-▸ **addDownloadExtensions**(`extensions`): `void`
+
+## addDownloadExtensions()
+
+> **addDownloadExtensions**(`extensions`): `void`
 
 Adds new extensions to the download extensions list
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `extensions` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:54](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L54)
+<a name="namespacesdownloadandoutlinkfunctionsenablelinktrackingmd"></a>
 
-___
 
-#### enableLinkTracking
+***
 
-▸ **enableLinkTracking**(`trackAlsoMiddleAndRightClicks?`): `void`
+
+## enableLinkTracking()
+
+> **enableLinkTracking**(`trackAlsoMiddleAndRightClicks?`): `void`
 
 Enables automatic link tracking. If called with `true`, left, right and
 middle clicks on links will be treated as opening a link. Opening a links to
 an external site (different domain) creates an outlink event. Opening a link
 to a downloadable file creates a download event
 
-##### Parameters
+### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
 | `trackAlsoMiddleAndRightClicks` | `boolean` | `true` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:30](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L30)
+<a name="namespacesdownloadandoutlinkfunctionsgetdownloadclassesmd"></a>
 
-___
 
-#### getDownloadClasses
+***
 
-▸ **getDownloadClasses**(): `Promise`\<`string`[]\>
+
+## getDownloadClasses()
+
+> **getDownloadClasses**(): `Promise`\<`string`[]\>
 
 Returns list of download classes (CSS classes that indicate a link is a download)
 
-##### Returns
+### Returns
 
 `Promise`\<`string`[]\>
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:108](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L108)
+<a name="namespacesdownloadandoutlinkfunctionsgetlinktrackingtimermd"></a>
 
-___
 
-#### getLinkTrackingTimer
+***
 
-▸ **getLinkTrackingTimer**(): `Promise`\<`number`\>
+
+## getLinkTrackingTimer()
+
+> **getLinkTrackingTimer**(): `Promise`\<`number`\>
 
 Returns lock/wait time after a request set by setLinkTrackingTimer
 
-##### Returns
+### Returns
 
 `Promise`\<`number`\>
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:82](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L82)
+<a name="namespacesdownloadandoutlinkfunctionsremovedownloadclassesmd"></a>
 
-___
 
-#### removeDownloadClasses
+***
 
-▸ **removeDownloadClasses**(`classes`): `void`
+
+## removeDownloadClasses()
+
+> **removeDownloadClasses**(`classes`): `void`
 
 Removes classes from the download classes list
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `classes` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:141](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L141)
+<a name="namespacesdownloadandoutlinkfunctionsremovedownloadextensionsmd"></a>
 
-___
 
-#### removeDownloadExtensions
+***
 
-▸ **removeDownloadExtensions**(`extensions`): `void`
+
+## removeDownloadExtensions()
+
+> **removeDownloadExtensions**(`extensions`): `void`
 
 Removes extensions from the download extensions list
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `extensions` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:61](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L61)
+<a name="namespacesdownloadandoutlinkfunctionssetdownloadclassesmd"></a>
 
-___
 
-#### setDownloadClasses
+***
 
-▸ **setDownloadClasses**(`classes`): `void`
+
+## setDownloadClasses()
+
+> **setDownloadClasses**(`classes`): `void`
 
 Sets a list of class names that indicate whether a list is a download and not an outlink
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `classes` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:127](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L127)
+<a name="namespacesdownloadandoutlinkfunctionssetdownloadextensionsmd"></a>
 
-___
 
-#### setDownloadExtensions
+***
 
-▸ **setDownloadExtensions**(`extensions`): `void`
+
+## setDownloadExtensions()
+
+> **setDownloadExtensions**(`extensions`): `void`
 
 Overwrites the list of file extensions indicating that a link is a download
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `extensions` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:47](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L47)
+<a name="namespacesdownloadandoutlinkfunctionssetignoreclassesmd"></a>
 
-___
 
-#### setIgnoreClasses
+***
 
-▸ **setIgnoreClasses**(`classes`): `void`
+
+## setIgnoreClasses()
+
+> **setIgnoreClasses**(`classes`): `void`
 
 Set a list of class names that indicate a link should not be tracked
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `classes` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:101](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L101)
+<a name="namespacesdownloadandoutlinkfunctionssetlinkclassesmd"></a>
 
-___
 
-#### setLinkClasses
+***
 
-▸ **setLinkClasses**(`classes`): `void`
+
+## setLinkClasses()
+
+> **setLinkClasses**(`classes`): `void`
 
 Sets a list of class names that indicate whether a link is an outlink and not download
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `classes` | `string`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:40](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L40)
+<a name="namespacesdownloadandoutlinkfunctionssetlinktrackingtimermd"></a>
 
-___
 
-#### setLinkTrackingTimer
+***
 
-▸ **setLinkTrackingTimer**(`time`): `void`
+
+## setLinkTrackingTimer()
+
+> **setLinkTrackingTimer**(`time`): `void`
 
 When a visitor produces an events and closes the page immediately afterwards,
 e.g. when opening a link, the request might get cancelled. To avoid loosing
@@ -1449,709 +1350,753 @@ the last event this way, JavaScript Tracking Client will lock the page for a
 fraction of a second (if wait time hasn’t passed), giving the request time to
 reach the Collecting & Processing Pipeline
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `time` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:75](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L75)
+<a name="namespacesdownloadandoutlinkfunctionstracklinkmd"></a>
 
-___
 
-#### trackLink
+***
 
-▸ **trackLink**(`url`, `linkType`, `dimensions?`, `callback?`): `void`
+
+## trackLink()
+
+> **trackLink**(`url`, `linkType`, `dimensions?`, `callback?`): `void`
 
 Manually tracks outlink or download event with provided values
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `url` | `string` |
 | `linkType` | `string` |
-| `dimensions?` | [`Dimensions`](#dimensions) |
+| `dimensions?` | [`Dimensions`](#type-aliasesdimensionsmd) |
 | `callback?` | () => `void` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/download-and-outlink/download-and-outlink.service.ts:9](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/download-and-outlink/download-and-outlink.service.ts#L9)
+<a name="namespaceserrortrackingreadmemd"></a>
 
 
-<a name="moduleserrortrackingmd"></a>
+***
 
 
 ## ErrorTracking
 
-### Table of contents
+
+- [enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd)
+- [trackError](#namespaceserrortrackingfunctionstrackerrormd)
 
 
-- [enableJSErrorTracking](#enablejserrortracking)
-- [trackError](#trackerror)
+<a name="namespaceserrortrackingfunctionsenablejserrortrackingmd"></a>
 
 
-#### enableJSErrorTracking
+***
 
-▸ **enableJSErrorTracking**(`unique?`): `void`
+
+## enableJSErrorTracking()
+
+> **enableJSErrorTracking**(`unique?`): `void`
 
 Enables tracking of unhandled JavaScript errors.
 
-##### Parameters
+### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
 | `unique` | `boolean` | `true` | track only unique errors |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/error-tracking/errorTracking.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/error-tracking/errorTracking.service.ts#L8)
+<a name="namespaceserrortrackingfunctionstrackerrormd"></a>
 
-___
 
-#### trackError
+***
 
-▸ **trackError**(`error`): `void`
+
+## trackError()
+
+> **trackError**(`error`): `void`
 
 Attempts to send error tracking request using same format as native errors caught by enableJSErrorTracking().
 Such error request will still follow rules set for tracker, so it will be sent only when JS error tracking is enabled
-([enableJSErrorTracking](#enablejserrortracking) function was called before this attempt). It will also respect rules for tracking only unique errors.
+([enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd) function was called before this attempt). It will also respect rules for tracking only unique errors.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `error` | `Error` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/error-tracking/errorTracking.service.ts:16](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/error-tracking/errorTracking.service.ts#L16)
+<a name="namespacesgoalconversionsreadmemd"></a>
 
 
-<a name="modulesgoalconversionsmd"></a>
+***
 
 
 ## GoalConversions
 
-### Table of contents
+
+- [trackGoal](#namespacesgoalconversionsfunctionstrackgoalmd)
 
 
-- [trackGoal](#trackgoal)
+<a name="namespacesgoalconversionsfunctionstrackgoalmd"></a>
 
 
-#### trackGoal
+***
 
-▸ **trackGoal**(`goalId`, `conversionValue`, `dimensions?`, `options?`): `void`
+
+## trackGoal()
+
+> **trackGoal**(`goalId`, `conversionValue`, `dimensions?`, `options?`): `void`
 
 Tracks manual goal conversion
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `goalId` | `string` \| `number` |
 | `conversionValue` | `number` |
-| `dimensions?` | [`Dimensions`](#dimensions) |
-| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
+| `dimensions?` | [`Dimensions`](#type-aliasesdimensionsmd) |
+| `options?` | [`EcommerceOptions`](#type-aliasesecommerceoptionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/goal-conversions/goal-conversions.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/goal-conversions/goal-conversions.service.ts#L8)
+<a name="namespacesheartbeatreadmemd"></a>
 
 
-<a name="modulesheartbeatmd"></a>
+***
 
 
 ## Heartbeat
 
-### Table of contents
+
+- [disableHeartBeatTimer](#namespacesheartbeatfunctionsdisableheartbeattimermd)
+- [enableHeartBeatTimer](#namespacesheartbeatfunctionsenableheartbeattimermd)
 
 
-- [disableHeartBeatTimer](#disableheartbeattimer)
-- [enableHeartBeatTimer](#enableheartbeattimer)
+<a name="namespacesheartbeatfunctionsdisableheartbeattimermd"></a>
 
 
-#### disableHeartBeatTimer
+***
 
-▸ **disableHeartBeatTimer**(): `void`
+
+## disableHeartBeatTimer()
+
+> **disableHeartBeatTimer**(): `void`
 
 Disables sending heartbeats if they were previously enabled by "enableHeartBeatTimer" function.
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/heartbeat/heartbeat.service.ts:14](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L14)
+<a name="namespacesheartbeatfunctionsenableheartbeattimermd"></a>
 
-___
 
-#### enableHeartBeatTimer
+***
 
-▸ **enableHeartBeatTimer**(`delays?`): `void`
+
+## enableHeartBeatTimer()
+
+> **enableHeartBeatTimer**(`delays?`): `void`
 
 When a visitor is not producing any events (e.g. because they are reading an article or watching a video), we don’t know if they are still on the page. This might skew page statistics, e.g. time on page value. Heartbeat timer allows us to determine how much time visitors spend on a page by sending heartbeats to the Tracker as long as the page is in focus.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `delays?` | `number`[] |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/heartbeat/heartbeat.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/heartbeat/heartbeat.service.ts#L7)
+<a name="namespacesmiscellaneousreadmemd"></a>
 
 
-<a name="modulesmiscellaneousmd"></a>
+***
 
 
 ## Miscellaneous
 
-### Table of contents
+
+- [setTrackingSourceProvider](#namespacesmiscellaneousfunctionssettrackingsourceprovidermd)
 
 
-- [setTrackingSourceProvider](#settrackingsourceprovider)
+<a name="namespacesmiscellaneousfunctionssettrackingsourceprovidermd"></a>
 
 
-#### setTrackingSourceProvider
+***
 
-▸ **setTrackingSourceProvider**(`provider`, `version`): `void`
+
+## setTrackingSourceProvider()
+
+> **setTrackingSourceProvider**(`provider`, `version`): `void`
 
 Adds metadata about used framework
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `provider` | `string` |
 | `version` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/miscellaneous/miscellaneous.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/miscellaneous/miscellaneous.service.ts#L7)
+<a name="namespacespageviewsreadmemd"></a>
 
 
-<a name="modulespageviewsmd"></a>
+***
 
 
 ## PageViews
 
-### Table of contents
+
+- [trackPageView](#namespacespageviewsfunctionstrackpageviewmd)
 
 
-- [trackPageView](#trackpageview)
+<a name="namespacespageviewsfunctionstrackpageviewmd"></a>
 
 
-#### trackPageView
+***
 
-▸ **trackPageView**(`customPageTitle?`): `void`
+
+## trackPageView()
+
+> **trackPageView**(`customPageTitle?`): `void`
 
 Tracks a visit on the page that the function was run on
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `customPageTitle?` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/pageViews/pageViews.service.ts:7](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/pageViews/pageViews.service.ts#L7)
+<a name="namespacessitesearchreadmemd"></a>
 
 
-<a name="modulessitesearchmd"></a>
+***
 
 
 ## SiteSearch
 
-### Table of contents
+
+- [trackSiteSearch](#namespacessitesearchfunctionstracksitesearchmd)
 
 
-- [trackSiteSearch](#tracksitesearch)
+<a name="namespacessitesearchfunctionstracksitesearchmd"></a>
 
 
-#### trackSiteSearch
+***
 
-▸ **trackSiteSearch**(`keyword`, `category?`, `searchCount?`, `dimensions?`): `void`
+
+## trackSiteSearch()
+
+> **trackSiteSearch**(`keyword`, `category?`, `searchCount?`, `dimensions?`): `void`
 
 Tracks search requests on a website
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `keyword` | `string` |
 | `category?` | `string` |
 | `searchCount?` | `number` |
-| `dimensions?` | [`Dimensions`](#dimensions) |
+| `dimensions?` | [`Dimensions`](#type-aliasesdimensionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/site-search/site-search.service.ts:8](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/site-search/site-search.service.ts#L8)
+<a name="namespacesusermanagementreadmemd"></a>
 
 
-<a name="modulesusermanagementmd"></a>
+***
 
 
 ## UserManagement
 
-### Table of contents
+
+- [deanonymizeUser](#namespacesusermanagementfunctionsdeanonymizeusermd)
+- [getUserId](#namespacesusermanagementfunctionsgetuseridmd)
+- [getVisitorId](#namespacesusermanagementfunctionsgetvisitoridmd)
+- [getVisitorInfo](#namespacesusermanagementfunctionsgetvisitorinfomd)
+- [resetUserId](#namespacesusermanagementfunctionsresetuseridmd)
+- [setUserId](#namespacesusermanagementfunctionssetuseridmd)
+- [setUserIsAnonymous](#namespacesusermanagementfunctionssetuserisanonymousmd)
 
 
-- [deanonymizeUser](#deanonymizeuser)
-- [getUserId](#getuserid)
-- [getVisitorId](#getvisitorid)
-- [getVisitorInfo](#getvisitorinfo)
-- [resetUserId](#resetuserid)
-- [setUserId](#setuserid)
-- [setUserIsAnonymous](#setuserisanonymous)
+<a name="namespacesusermanagementfunctionsdeanonymizeusermd"></a>
 
 
-#### deanonymizeUser
+***
 
-▸ **deanonymizeUser**(): `void`
+
+## deanonymizeUser()
+
+> **deanonymizeUser**(): `void`
 
 Disables anonymous tracking and sends deanonymization event to the Tracker. Recommended method for disabling anonymous tracking.
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:89](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L89)
+<a name="namespacesusermanagementfunctionsgetuseridmd"></a>
 
-___
 
-#### getUserId
+***
 
-▸ **getUserId**(): `Promise`\<`string`\>
+
+## getUserId()
+
+> **getUserId**(): `Promise`\<`string`\>
 
 The function that will return user ID
 
-##### Returns
+### Returns
 
 `Promise`\<`string`\>
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:9](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L9)
+<a name="namespacesusermanagementfunctionsgetvisitoridmd"></a>
 
-___
 
-#### getVisitorId
+***
 
-▸ **getVisitorId**(): `Promise`\<`string`\>
+
+## getVisitorId()
+
+> **getVisitorId**(): `Promise`\<`string`\>
 
 Returns 16-character hex ID of the visitor
 
-##### Returns
+### Returns
 
 `Promise`\<`string`\>
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:44](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L44)
+<a name="namespacesusermanagementfunctionsgetvisitorinfomd"></a>
 
-___
 
-#### getVisitorInfo
+***
 
-▸ **getVisitorInfo**(): `Promise`\<[`VisitorInfo`](#visitorinfo)\>
+
+## getVisitorInfo()
+
+> **getVisitorInfo**(): `Promise`\<[`VisitorInfo`](#type-aliasesvisitorinfomd)\>
 
 Returns visitor information in an array
 
-##### Returns
+### Returns
 
-`Promise`\<[`VisitorInfo`](#visitorinfo)\>
+`Promise`\<[`VisitorInfo`](#type-aliasesvisitorinfomd)\>
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:63](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L63)
+<a name="namespacesusermanagementfunctionsresetuseridmd"></a>
 
-___
 
-#### resetUserId
+***
 
-▸ **resetUserId**(): `void`
+
+## resetUserId()
+
+> **resetUserId**(): `void`
 
 Clears previously set userID, e.g. when visitor logs out
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:37](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L37)
+<a name="namespacesusermanagementfunctionssetuseridmd"></a>
 
-___
 
-#### setUserId
+***
 
-▸ **setUserId**(`userId`): `void`
+
+## setUserId()
+
+> **setUserId**(`userId`): `void`
 
 User ID is an additional parameter that allows you to aggregate data. When
 set up, you will be able to search through sessions by this parameter, filter
 reports through it or create Multi attribution reports using User ID
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `userId` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:30](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L30)
+<a name="namespacesusermanagementfunctionssetuserisanonymousmd"></a>
 
-___
 
-#### setUserIsAnonymous
+***
 
-▸ **setUserIsAnonymous**(`isAnonymous`): `void`
+
+## setUserIsAnonymous()
+
+> **setUserIsAnonymous**(`isAnonymous`): `void`
 
 Enables or disables anonymous tracking (anonymous = without consent). The next emitted event will have anonymous mode set accordingly.
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Parameter | Type |
+| ------ | ------ |
 | `isAnonymous` | `boolean` |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/user-management/userManagement.service.ts:82](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/user-management/userManagement.service.ts#L82)
+<a name="namespacesecommercereadmemd"></a>
 
 
-<a name="modulesecommercemd"></a>
+***
 
 
 ## eCommerce
 
-### Table of contents
+
+- [~~addEcommerceItem~~](#namespacesecommercefunctionsaddecommerceitemmd)
+- [~~clearEcommerceCart~~](#namespacesecommercefunctionsclearecommercecartmd)
+- [ecommerceAddToCart](#namespacesecommercefunctionsecommerceaddtocartmd)
+- [ecommerceCartUpdate](#namespacesecommercefunctionsecommercecartupdatemd)
+- [ecommerceOrder](#namespacesecommercefunctionsecommerceordermd)
+- [ecommerceProductDetailView](#namespacesecommercefunctionsecommerceproductdetailviewmd)
+- [ecommerceRemoveFromCart](#namespacesecommercefunctionsecommerceremovefromcartmd)
+- [~~getEcommerceItems~~](#namespacesecommercefunctionsgetecommerceitemsmd)
+- [~~removeEcommerceItem~~](#namespacesecommercefunctionsremoveecommerceitemmd)
+- [~~setEcommerceView~~](#namespacesecommercefunctionssetecommerceviewmd)
+- [~~trackEcommerceCartUpdate~~](#namespacesecommercefunctionstrackecommercecartupdatemd)
+- [~~trackEcommerceOrder~~](#namespacesecommercefunctionstrackecommerceordermd)
 
 
-- [addEcommerceItem](#addecommerceitem)
-- [clearEcommerceCart](#clearecommercecart)
-- [ecommerceAddToCart](#ecommerceaddtocart)
-- [ecommerceCartUpdate](#ecommercecartupdate)
-- [ecommerceOrder](#ecommerceorder)
-- [ecommerceProductDetailView](#ecommerceproductdetailview)
-- [ecommerceRemoveFromCart](#ecommerceremovefromcart)
-- [getEcommerceItems](#getecommerceitems)
-- [removeEcommerceItem](#removeecommerceitem)
-- [setEcommerceView](#setecommerceview)
-- [trackEcommerceCartUpdate](#trackecommercecartupdate)
-- [trackEcommerceOrder](#trackecommerceorder)
+<a name="namespacesecommercefunctionsaddecommerceitemmd"></a>
 
 
-#### addEcommerceItem
+***
 
-▸ **addEcommerceItem**(`productSKU`, `productName`, `productCategory`, `productPrice`, `productQuantity`): `void`
 
-##### Parameters
+## ~~addEcommerceItem()~~
 
-| Name | Type |
-| :------ | :------ |
+> **addEcommerceItem**(`productSKU`, `productName`, `productCategory`, `productPrice`, `productQuantity`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `productSKU` | `string` |
 | `productName` | `string` |
 | `productCategory` | `string` \| `string`[] |
 | `productPrice` | `number` |
 | `productQuantity` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-**`Deprecated`**
+### Deprecated
 
 Please use the ecommerceAddToCart instead.
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:15](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L15)
+<a name="namespacesecommercefunctionsclearecommercecartmd"></a>
 
-___
 
-#### clearEcommerceCart
+***
 
-▸ **clearEcommerceCart**(): `void`
 
-##### Returns
+## ~~clearEcommerceCart()~~
+
+> **clearEcommerceCart**(): `void`
+
+### Returns
 
 `void`
 
-**`Deprecated`**
+### Deprecated
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:156](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L156)
+<a name="namespacesecommercefunctionsecommerceaddtocartmd"></a>
 
-___
 
-#### ecommerceAddToCart
+***
 
-▸ **ecommerceAddToCart**(`products`, `options?`): `void`
+
+## ecommerceAddToCart()
+
+> **ecommerceAddToCart**(`products`, `options?`): `void`
 
 Tracks action of adding products to a cart
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `products` | [`Product`](#product)[] |
-| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
+| Parameter | Type |
+| ------ | ------ |
+| `products` | [`Product`](#type-aliasesproductmd)[] |
+| `options?` | [`EcommerceOptions`](#type-aliasesecommerceoptionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:35](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L35)
+<a name="namespacesecommercefunctionsecommercecartupdatemd"></a>
 
-___
 
-#### ecommerceCartUpdate
+***
 
-▸ **ecommerceCartUpdate**(`products`, `grandTotal`, `options?`): `void`
+
+## ecommerceCartUpdate()
+
+> **ecommerceCartUpdate**(`products`, `grandTotal`, `options?`): `void`
 
 Tracks current state of a cart
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `products` | [`Product`](#product)[] |
+| Parameter | Type |
+| ------ | ------ |
+| `products` | [`Product`](#type-aliasesproductmd)[] |
 | `grandTotal` | `string` \| `number` |
-| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
+| `options?` | [`EcommerceOptions`](#type-aliasesecommerceoptionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:126](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L126)
+<a name="namespacesecommercefunctionsecommerceordermd"></a>
 
-___
 
-#### ecommerceOrder
+***
 
-▸ **ecommerceOrder**(`products`, `paymentInformation`, `options?`): `void`
+
+## ecommerceOrder()
+
+> **ecommerceOrder**(`products`, `paymentInformation`, `options?`): `void`
 
 Tracks conversion, including products and payment details
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `products` | [`Product`](#product)[] |
-| `paymentInformation` | [`PaymentInformation`](#paymentinformation) |
-| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
+| Parameter | Type |
+| ------ | ------ |
+| `products` | [`Product`](#type-aliasesproductmd)[] |
+| `paymentInformation` | [`PaymentInformation`](#type-aliasespaymentinformationmd) |
+| `options?` | [`EcommerceOptions`](#type-aliasesecommerceoptionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:103](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L103)
+<a name="namespacesecommercefunctionsecommerceproductdetailviewmd"></a>
 
-___
 
-#### ecommerceProductDetailView
+***
 
-▸ **ecommerceProductDetailView**(`products`, `options?`): `void`
+
+## ecommerceProductDetailView()
+
+> **ecommerceProductDetailView**(`products`, `options?`): `void`
 
 Tracks action of viewing product page
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `products` | [`Product`](#product)[] |
-| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
+| Parameter | Type |
+| ------ | ------ |
+| `products` | [`Product`](#type-aliasesproductmd)[] |
+| `options?` | [`EcommerceOptions`](#type-aliasesecommerceoptionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:142](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L142)
+<a name="namespacesecommercefunctionsecommerceremovefromcartmd"></a>
 
-___
 
-#### ecommerceRemoveFromCart
+***
 
-▸ **ecommerceRemoveFromCart**(`products`, `options?`): `void`
+
+## ecommerceRemoveFromCart()
+
+> **ecommerceRemoveFromCart**(`products`, `options?`): `void`
 
 Tracks action of removing a products from a cart
 
-##### Parameters
+### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `products` | [`Product`](#product)[] |
-| `options?` | [`EcommerceOptions`](#ecommerceoptions) |
+| Parameter | Type |
+| ------ | ------ |
+| `products` | [`Product`](#type-aliasesproductmd)[] |
+| `options?` | [`EcommerceOptions`](#type-aliasesecommerceoptionsmd) |
 
-##### Returns
+### Returns
 
 `void`
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:52](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L52)
+<a name="namespacesecommercefunctionsgetecommerceitemsmd"></a>
 
-___
 
-#### getEcommerceItems
+***
 
-▸ **getEcommerceItems**(): `Promise`\<`object`\>
 
-##### Returns
+## ~~getEcommerceItems()~~
+
+> **getEcommerceItems**(): `Promise`\<`object`\>
+
+### Returns
 
 `Promise`\<`object`\>
 
-**`Deprecated`**
+### Deprecated
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:62](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L62)
+<a name="namespacesecommercefunctionsremoveecommerceitemmd"></a>
 
-___
 
-#### removeEcommerceItem
+***
 
-▸ **removeEcommerceItem**(`productSKU`): `void`
 
-##### Parameters
+## ~~removeEcommerceItem()~~
 
-| Name | Type |
-| :------ | :------ |
+> **removeEcommerceItem**(`productSKU`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `productSKU` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-**`Deprecated`**
+### Deprecated
 
 Please use the ecommerceRemoveFromCart instead.
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:45](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L45)
+<a name="namespacesecommercefunctionssetecommerceviewmd"></a>
 
-___
 
-#### setEcommerceView
+***
 
-▸ **setEcommerceView**(`productSKU`, `productName?`, `productCategory?`, `productPrice?`): `void`
 
-##### Parameters
+## ~~setEcommerceView()~~
 
-| Name | Type |
-| :------ | :------ |
+> **setEcommerceView**(`productSKU`, `productName?`, `productCategory?`, `productPrice?`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `productSKU` | `string` |
 | `productName?` | `string` |
 | `productCategory?` | `string`[] |
 | `productPrice?` | `string` |
 
-##### Returns
+### Returns
 
 `void`
 
-**`Deprecated`**
+### Deprecated
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:163](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L163)
+<a name="namespacesecommercefunctionstrackecommercecartupdatemd"></a>
 
-___
 
-#### trackEcommerceCartUpdate
+***
 
-▸ **trackEcommerceCartUpdate**(`cartAmount`): `void`
 
-##### Parameters
+## ~~trackEcommerceCartUpdate()~~
 
-| Name | Type |
-| :------ | :------ |
+> **trackEcommerceCartUpdate**(`cartAmount`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `cartAmount` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-**`Deprecated`**
+### Deprecated
 
 Please use the ecommerceCartUpdate instead.
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:119](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L119)
+<a name="namespacesecommercefunctionstrackecommerceordermd"></a>
 
-___
 
-#### trackEcommerceOrder
+***
 
-▸ **trackEcommerceOrder**(`orderId`, `orderGrandTotal`, `orderSubTotal?`, `orderTax?`, `orderShipping?`, `orderDiscount?`): `void`
 
-##### Parameters
+## ~~trackEcommerceOrder()~~
 
-| Name | Type |
-| :------ | :------ |
+> **trackEcommerceOrder**(`orderId`, `orderGrandTotal`, `orderSubTotal?`, `orderTax?`, `orderShipping?`, `orderDiscount?`): `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
 | `orderId` | `string` |
 | `orderGrandTotal` | `number` |
 | `orderSubTotal?` | `number` |
@@ -2159,14 +2104,234 @@ ___
 | `orderShipping?` | `number` |
 | `orderDiscount?` | `number` |
 
-##### Returns
+### Returns
 
 `void`
 
-**`Deprecated`**
+### Deprecated
 
 Please use the ecommerceOrder instead.
 
-##### Defined in
 
-[services/e-commerce/e-commerce.service.ts:81](https://github.com/PiwikPRO/tracking-base-library/blob/master/src/services/e-commerce/e-commerce.service.ts#L81)
+<a name="type-aliasesdimensionsmd"></a>
+
+
+***
+
+
+## Dimensions
+
+> **Dimensions** = `Record`\<`` `dimension${number}` ``, `string`\>
+
+
+<a name="type-aliasesecommerceoptionsmd"></a>
+
+
+***
+
+
+## EcommerceOptions
+
+> **EcommerceOptions** = `object`
+
+### Properties
+
+#### currencyCode?
+
+> `optional` **currencyCode?**: `string`
+
+Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If not provided, the currency set in app settings will be used instead.
+
+
+<a name="type-aliasesgetinitscriptmd"></a>
+
+
+***
+
+
+## GetInitScript
+
+> **GetInitScript** = (`params`) => `string`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `params` | `GetInitScriptParams` |
+
+### Returns
+
+`string`
+
+
+<a name="type-aliasesinitoptionsmd"></a>
+
+
+***
+
+
+## InitOptions
+
+> **InitOptions** = `object`
+
+### Properties
+
+#### dataLayerName?
+
+> `optional` **dataLayerName?**: `string`
+
+Defaults to 'dataLayer'
+
+
+#### nonce?
+
+> `optional` **nonce?**: `string`
+
+
+<a name="type-aliasesinitializemd"></a>
+
+
+***
+
+
+## Initialize
+
+> **Initialize** = (`containerId`, `containerUrl`, `nonceOrOptions?`) => `void`
+
+### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `containerId` | `string` |
+| `containerUrl` | `string` |
+| `nonceOrOptions?` | `string` \| [`InitOptions`](#type-aliasesinitoptionsmd) |
+
+### Returns
+
+`void`
+
+
+<a name="type-aliasespaymentinformationmd"></a>
+
+
+***
+
+
+## PaymentInformation
+
+> **PaymentInformation** = `object`
+
+### Properties
+
+#### discount?
+
+> `optional` **discount?**: `number` \| `string`
+
+
+#### grandTotal
+
+> **grandTotal**: `number` \| `string`
+
+
+#### orderId
+
+> **orderId**: `string`
+
+
+#### shipping?
+
+> `optional` **shipping?**: `number` \| `string`
+
+
+#### subTotal?
+
+> `optional` **subTotal?**: `number` \| `string`
+
+
+#### tax?
+
+> `optional` **tax?**: `number` \| `string`
+
+
+<a name="type-aliasesproductmd"></a>
+
+
+***
+
+
+## Product
+
+> **Product** = `object`
+
+### Properties
+
+#### brand?
+
+> `optional` **brand?**: `string`
+
+
+#### category?
+
+> `optional` **category?**: `LimitedArrayFiveStrings`
+
+
+#### customDimensions?
+
+> `optional` **customDimensions?**: `Record`\<`number`, `string`\>
+
+
+#### name?
+
+> `optional` **name?**: `string`
+
+
+#### price?
+
+> `optional` **price?**: `number`
+
+
+#### quantity?
+
+> `optional` **quantity?**: `number`
+
+
+#### sku
+
+> **sku**: `string`
+
+
+#### variant?
+
+> `optional` **variant?**: `string`
+
+
+<a name="type-aliasesvisitorinfomd"></a>
+
+
+***
+
+
+## VisitorInfo
+
+> **VisitorInfo** = \[`"0"` \| `"1"`, `string`, `number`, `string` \| `number`, `number`, `number` \| `""`, `number` \| `""`\]
+
+
+<a name="variablesdefaultmd"></a>
+
+
+***
+
+
+## default
+
+> `const` **default**: `object`
+
+### Type Declaration
+
+#### getInitScript
+
+> **getInitScript**: [`GetInitScript`](#type-aliasesgetinitscriptmd)
+
+#### initialize
+
+> **initialize**: [`Initialize`](#type-aliasesinitializemd)
