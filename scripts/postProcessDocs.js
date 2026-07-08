@@ -6,20 +6,30 @@ const file = readFileSync(README, 'utf-8')
 
 const formattedOutput = file
   .split('\n')
-  // remove additional heading
-  .filter((line) => !line.includes('# @piwikpro/tracking-base-library'))
-  // remove links suited for multi page documentation
-  .filter((line) => !line.includes('Exports'))
-  // remove duplicated header
+  // remove the index page heading
+  .filter((line) => !line.includes('## @piwikpro/tracking-base-library'))
+  // remove per-namespace "Functions" heading; the bullet list is enough
   .filter((line) => !line.includes('### Functions'))
-  // remove remove additional prefix
-  .map((line) => line.replace('Namespace: ', ''))
-  // increase heading level for the title
+  // rename the index group heading
+  .map((line) => line.replace('### Namespaces', '### Table of contents'))
+  // restore the title heading level
   .map((line) =>
     line.replace(
       '## Piwik PRO Tracking Base Library',
       '# Piwik PRO Tracking Base Library'
     )
+  )
+  // strip the module-dir prefix from anchors and links
+  .map((line) =>
+    line.replaceAll('tracking-base-librarynamespaces', 'namespaces')
+  )
+  // keep separators between sections, not between type-alias properties
+  .filter((line) => line.trim() !== '***')
+  // add a separator before each section anchor (except the readme title)
+  .map((line) =>
+    line.startsWith('<a name="') && !line.includes('name="readmemd"')
+      ? `${line}\n\n\n***\n`
+      : line
   )
   .join('\n')
 
