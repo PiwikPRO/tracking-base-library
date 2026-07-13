@@ -26,6 +26,7 @@
   ],
   "scripts": {
     "dev": "vite build --watch",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
     "build": "tsc && vite build",
     "build:docs": "typedoc && concat-md --decrease-title-levels --start-title-level-at=2 docs_raw > README.md && node scripts/postProcessDocs.js",
     "preview": "vite preview",
@@ -44,6 +45,7 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.29",
+    "auto-changelog": "^2.6.0",
     "babel-jest": "^30.4.1",
     "concat-md": "^0.5.1",
     "eslint": "^10.5.0",
