@@ -1,5 +1,11 @@
 import { COOKIE_TRACK_EVENT } from '../../constants/track-event.constant'
-import { expectPaqEvent, resetPaq } from '../../test-utils/paq.mock'
+import { Tracker } from '../../interfaces/tracker'
+import {
+  createTrackerMock,
+  expectPaqEvent,
+  resetPaq,
+  resolveLastTrackerCallback,
+} from '../../test-utils/paq.mock'
 import * as CookieManagement from './cookieManagement.service'
 
 beforeEach(() => {
@@ -75,6 +81,28 @@ describe('CookieManagement setters', () => {
       fn(...args)
 
       expectPaqEvent(paqEvent)
+    }
+  )
+})
+
+const GETTERS: Array<{ method: keyof Tracker; value: unknown }> = [
+  { method: 'hasCookies', value: true },
+  { method: 'getCookieDomain', value: '.example.com' },
+  { method: 'getCookiePath', value: '/app' },
+  { method: 'getConfigVisitorCookieTimeout', value: 33955200 },
+  { method: 'getSessionCookieTimeout', value: 1800 },
+]
+
+describe('CookieManagement async getters', () => {
+  it.each(GETTERS)(
+    '$method resolves the value returned by the tracker',
+    async ({ method, value }) => {
+      const promise = (
+        CookieManagement as unknown as Record<string, () => Promise<unknown>>
+      )[method]()
+      resolveLastTrackerCallback(createTrackerMock({ [method]: () => value }))
+
+      await expect(promise).resolves.toEqual(value)
     }
   )
 })

@@ -1,5 +1,10 @@
 import { CLIENT_CONFIG_TRACK_EVENT } from '../../constants/track-event.constant'
-import { expectPaqEvent, resetPaq } from '../../test-utils/paq.mock'
+import {
+  createTrackerMock,
+  expectPaqEvent,
+  resetPaq,
+  resolveLastTrackerCallback,
+} from '../../test-utils/paq.mock'
 import * as ClientConfiguration from './clientConfiguration.service'
 
 beforeEach(() => {
@@ -14,5 +19,13 @@ describe('ClientConfiguration', () => {
       CLIENT_CONFIG_TRACK_EVENT.SET_DOMAINS,
       ['example.com', 'app.example.com'],
     ])
+  })
+
+  it('resolves the internal domains from the tracker', async () => {
+    const domains = ['example.com', 'app.example.com']
+    const promise = ClientConfiguration.getDomains()
+    resolveLastTrackerCallback(createTrackerMock({ getDomains: () => domains }))
+
+    await expect(promise).resolves.toEqual(domains)
   })
 })

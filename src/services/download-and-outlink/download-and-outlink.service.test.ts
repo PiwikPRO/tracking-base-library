@@ -1,5 +1,10 @@
 import { DOWNLOAD_AND_OUTLINK_TRACK_EVENT } from '../../constants/track-event.constant'
-import { expectPaqEvent, resetPaq } from '../../test-utils/paq.mock'
+import {
+  createTrackerMock,
+  expectPaqEvent,
+  resetPaq,
+  resolveLastTrackerCallback,
+} from '../../test-utils/paq.mock'
 import * as DownloadAndOutlink from './download-and-outlink.service'
 
 beforeEach(() => {
@@ -102,5 +107,26 @@ describe('DownloadAndOutlink setters', () => {
       dimensions,
       callback,
     ])
+  })
+})
+
+describe('DownloadAndOutlink async getters', () => {
+  it('resolves the link tracking timer', async () => {
+    const promise = DownloadAndOutlink.getLinkTrackingTimer()
+    resolveLastTrackerCallback(
+      createTrackerMock({ getLinkTrackingTimer: () => 750 })
+    )
+
+    await expect(promise).resolves.toBe(750)
+  })
+
+  it('resolves the download classes', async () => {
+    const classes = ['download', 'file']
+    const promise = DownloadAndOutlink.getDownloadClasses()
+    resolveLastTrackerCallback(
+      createTrackerMock({ getDownloadClasses: () => classes })
+    )
+
+    await expect(promise).resolves.toEqual(classes)
   })
 })
