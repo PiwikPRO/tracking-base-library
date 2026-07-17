@@ -1,8 +1,10 @@
 import { CROSS_DOMAIN_TRACK_EVENT } from '../../constants/track-event.constant'
 import {
+  createTrackerMock,
   expectPaqEvent,
   lastPaqEvent,
   resetPaq,
+  resolveLastTrackerCallback,
 } from '../../test-utils/paq.mock'
 import * as CrossDomainTracking from './crossDomainTracking.service'
 
@@ -30,6 +32,26 @@ describe('CrossDomainTracking setters', () => {
       CROSS_DOMAIN_TRACK_EVENT.SET_CROSS_DOMAIN_LINKING_TIMEOUT,
       300,
     ])
+  })
+})
+
+describe('CrossDomainTracking async getters', () => {
+  it('resolves whether cross domain linking is enabled', async () => {
+    const promise = CrossDomainTracking.isCrossDomainLinkingEnabled()
+    resolveLastTrackerCallback(
+      createTrackerMock({ isCrossDomainLinkingEnabled: () => true })
+    )
+
+    await expect(promise).resolves.toBe(true)
+  })
+
+  it('resolves the cross domain linking url parameter', async () => {
+    const promise = CrossDomainTracking.getCrossDomainLinkingUrlParameter()
+    resolveLastTrackerCallback(
+      createTrackerMock({ getCrossDomainLinkingUrlParameter: () => 'pk_vid' })
+    )
+
+    await expect(promise).resolves.toBe('pk_vid')
   })
 })
 

@@ -2,7 +2,12 @@ import { ECOMMERCE_V2_TRACK_EVENT } from '../../constants/track-event.constant'
 import { PaymentInformation } from '../../interfaces/payment'
 import { Product } from '../../interfaces/product'
 import { EcommerceOptions } from '../../interfaces/utils'
-import { expectPaqEvent, resetPaq } from '../../test-utils/paq.mock'
+import {
+  createTrackerMock,
+  expectPaqEvent,
+  resetPaq,
+  resolveLastTrackerCallback,
+} from '../../test-utils/paq.mock'
 import * as eCommerce from './e-commerce.service'
 
 const products: Product[] = [
@@ -76,5 +81,17 @@ describe('eCommerce V2', () => {
       payment,
       options,
     ])
+  })
+})
+
+describe('eCommerce async getters', () => {
+  it('resolves the ecommerce items from the tracker', async () => {
+    const items = { 'SKU-1': { name: 'Product 1', quantity: 2 } }
+    const promise = eCommerce.getEcommerceItems()
+    resolveLastTrackerCallback(
+      createTrackerMock({ getEcommerceItems: () => items })
+    )
+
+    await expect(promise).resolves.toEqual(items)
   })
 })
