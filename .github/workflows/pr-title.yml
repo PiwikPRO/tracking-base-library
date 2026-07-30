@@ -16,6 +16,12 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: github.event.pull_request.draft == false
     steps:
-      - uses: PiwikPRO/actions/pr-title@master
+      # TEST ONLY. Two deliberate differences from the version to be merged:
+      #   1. no `if: github.event.pull_request.draft == false` - so the lint
+      #      runs on drafts as well
+      #   2. the action is referenced locally, which requires the checkout step
+      # Before merging, restore the guard and replace both steps with:
+      #   - uses: PiwikPRO/actions/pr-title@master
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: ./.github/actions/pr-title

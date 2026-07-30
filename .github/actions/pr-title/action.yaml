@@ -1,0 +1,21 @@
+name: Lint PR title
+description: Validate a pull request title against the Conventional Commits format
+inputs:
+  types:
+    required: false
+    description: Pipe-separated list of allowed commit types
+    default: feat|fix|perf|refactor|docs|test|build|ci|chore|revert
+  scopes:
+    required: false
+    description: Pipe-separated list of allowed scopes, or "*" to allow any scope
+    default: '*'
+runs:
+  using: composite
+  steps:
+    - name: Lint PR title
+      shell: bash
+      env:
+        PR_TITLE: ${{ github.event.pull_request.title }}
+        TYPES: ${{ inputs.types }}
+        SCOPES: ${{ inputs.scopes }}
+      run: ${{ github.action_path }}/lint.sh
