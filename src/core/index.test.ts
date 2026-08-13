@@ -20,9 +20,7 @@ describe('init', () => {
 
     expect(script.async).toBe(true)
     expect(script.text).toContain('(function(window, document, config)')
-    expect(script.text).toContain(
-      `"containerId":"${CONTAINER_ID}"`
-    )
+    expect(script.text).toContain(`"containerId":"${CONTAINER_ID}"`)
     expect(script.text).toContain(`"containerUrl":"${CONTAINER_URL}"`)
     expect(script.text).toContain('"dataLayerName":"dataLayer"')
     expect(script.text).toContain('tags.src=config.containerUrl+"/"+id+".js"')
@@ -205,8 +203,6 @@ describe('getInitScript', () => {
     })
 
     expect(scriptContent).toContain('"dataLayerName":"my-data-layer"')
-    expect(scriptContent).toContain(
-      'encodeURIComponent(dataLayerName)'
-    )
+    expect(scriptContent).toContain('encodeURIComponent(dataLayerName)')
   })
 })

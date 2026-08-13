@@ -31,9 +31,9 @@ describe('stripTrailingSlashes method', () => {
 
 describe('assertContainerId', () => {
   it('accepts a UUID container ID', () => {
-    expect(
-      assertContainerId('1f74dda5-b598-41d6-a9e4-f501ef4379e1')
-    ).toBe('1f74dda5-b598-41d6-a9e4-f501ef4379e1')
+    expect(assertContainerId('1f74dda5-b598-41d6-a9e4-f501ef4379e1')).toBe(
+      '1f74dda5-b598-41d6-a9e4-f501ef4379e1'
+    )
   })
 
   it('rejects non-UUID values', () => {
@@ -61,7 +61,9 @@ describe('assertDataLayerName', () => {
     expect(() => assertDataLayerName("');alert(1);//")).toThrow(
       /Use letters, digits/
     )
-    expect(() => assertDataLayerName('has space')).toThrow(/Use letters, digits/)
+    expect(() => assertDataLayerName('has space')).toThrow(
+      /Use letters, digits/
+    )
     expect(() => assertDataLayerName('has&amp')).toThrow(/Use letters, digits/)
   })
 })
@@ -91,27 +93,27 @@ describe('assertContainerUrl', () => {
   })
 
   it('rejects URLs with quotes, whitespace, or control characters', () => {
-    expect(() =>
-      assertContainerUrl('https://example.com/"')
-    ).toThrow(/control characters, quotes, or whitespace/)
-    expect(() =>
-      assertContainerUrl('https://example.com/ path')
-    ).toThrow(/control characters, quotes, or whitespace/)
-    expect(() =>
-      assertContainerUrl('https://example.com/\u0000evil')
-    ).toThrow(/control characters, quotes, or whitespace/)
-    expect(() =>
-      assertContainerUrl('https://example.com/\u007F')
-    ).toThrow(/control characters, quotes, or whitespace/)
+    expect(() => assertContainerUrl('https://example.com/"')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/ path')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/\u0000evil')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/\u007F')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
   })
 
   it('rejects embedded credentials', () => {
-    expect(() =>
-      assertContainerUrl('https://user:pass@example.com')
-    ).toThrow(/credentials/)
-    expect(() =>
-      assertContainerUrl('https://user@example.com')
-    ).toThrow(/credentials/)
+    expect(() => assertContainerUrl('https://user:pass@example.com')).toThrow(
+      /credentials/
+    )
+    expect(() => assertContainerUrl('https://user@example.com')).toThrow(
+      /credentials/
+    )
   })
 
   it('rejects invalid URLs', () => {

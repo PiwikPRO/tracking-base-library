@@ -69,7 +69,9 @@ export const init: Initialize = (containerId, containerUrl, nonceOrOptions) => {
     })
   } catch (error) {
     console.error(
-      error instanceof Error ? error.message : 'Invalid Piwik Pro configuration.'
+      error instanceof Error
+        ? error.message
+        : 'Invalid Piwik Pro configuration.'
     )
     return
   }
