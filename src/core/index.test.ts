@@ -2,6 +2,9 @@ import { DataLayerEntry } from '../services/dataLayer/dataLayer.service'
 import * as DataLayer from '../services/dataLayer/dataLayer.service'
 import { getInitScript, init } from './index'
 
+const CONTAINER_ID = '1f74dda5-b598-41d6-a9e4-f501ef4379e1'
+const CONTAINER_URL = 'https://example.com'
+
 afterEach(() => {
   const body = document.getElementsByTagName('body')[0]
   body.innerHTML = ''
@@ -9,26 +12,24 @@ afterEach(() => {
 
 describe('init', () => {
   it('should create and append script element with correct attributes', () => {
-    init('containerId', 'containerUrl')
+    init(CONTAINER_ID, CONTAINER_URL)
 
     const script = document.getElementById(
       'PiwikPROInitializer'
     ) as HTMLScriptElement
 
     expect(script.async).toBe(true)
-    expect(script.text)
-      .toContain(`(function(window, document, dataLayerName, id) {
-  window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});var scripts=document.getElementsByTagName('script')[0],tags=document.createElement('script');
-  function stgCreateCookie(a,b,c){var d="";if(c){var e=new Date;e.setTime(e.getTime()+24*c*60*60*1e3),d="; expires="+e.toUTCString();f="; SameSite=Strict"}document.cookie=a+"="+b+d+f+"; path=/"}
-  var isStgDebug=(window.location.href.match("stg_debug")||document.cookie.match("stg_debug"))&&!window.location.href.match("stg_disable_debug");stgCreateCookie("stg_debug",isStgDebug?1:"",isStgDebug?14:-1);
-  var qP=[];dataLayerName!=="dataLayer"&&qP.push("data_layer_name="+dataLayerName),isStgDebug&&qP.push("stg_debug");var qPString=qP.length>0?("?"+qP.join("&")):"";
-  tags.async=!0,tags.src="containerUrl/"+id+".js"+qPString,scripts.parentNode.insertBefore(tags,scripts);
-  !function(a,n,i){a[n]=a[n]||{};for(var c=0;c<i.length;c++)!function(i){a[n][i]=a[n][i]||{},a[n][i].api=a[n][i].api||function(){var a=[].slice.call(arguments,0);"string"==typeof a[0]&&window[dataLayerName].push({event:n+"."+i+":"+a[0],parameters:[].slice.call(arguments,1)})}}(i[c])}(window,"ppms",["tm","cm"]);
-  })(window, document, 'dataLayer', 'containerId');`)
+    expect(script.text).toContain('(function(window, document, config)')
+    expect(script.text).toContain(
+      `"containerId":"${CONTAINER_ID}"`
+    )
+    expect(script.text).toContain(`"containerUrl":"${CONTAINER_URL}"`)
+    expect(script.text).toContain('"dataLayerName":"dataLayer"')
+    expect(script.text).toContain('tags.src=config.containerUrl+"/"+id+".js"')
   })
 
   it('should set nonce attribute if provided', () => {
-    init('containerId', 'containerUrl', 'nonce')
+    init(CONTAINER_ID, CONTAINER_URL, 'nonce')
 
     const script = document.getElementById(
       'PiwikPROInitializer'
@@ -38,7 +39,7 @@ describe('init', () => {
   })
 
   it('should set nonce attribute if provided as option', () => {
-    init('containerId', 'containerUrl', { nonce: 'nonce' })
+    init(CONTAINER_ID, CONTAINER_URL, { nonce: 'nonce' })
 
     const script = document.getElementById(
       'PiwikPROInitializer'
@@ -50,7 +51,7 @@ describe('init', () => {
   it('should log error if containerId is empty', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
 
-    init('', 'containerUrl')
+    init('', CONTAINER_URL)
 
     const script = document.getElementById(
       'PiwikPROInitializer'
@@ -67,7 +68,7 @@ describe('init', () => {
   it('should log error if containerUrl is empty', () => {
     const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
 
-    init('containerId', '')
+    init(CONTAINER_ID, '')
 
     const script = document.getElementById(
       'PiwikPROInitializer'
@@ -81,9 +82,35 @@ describe('init', () => {
     consoleErrorMock.mockRestore()
   })
 
+  it('should log error if containerId is not a UUID', () => {
+    const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
+
+    init('not-a-uuid', CONTAINER_URL)
+
+    expect(consoleErrorMock).toHaveBeenCalledWith(
+      expect.stringContaining('Expected a UUID container ID')
+    )
+    expect(document.getElementById('PiwikPROInitializer')).toBeNull()
+
+    consoleErrorMock.mockRestore()
+  })
+
+  it('should log error if containerUrl is not https', () => {
+    const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation()
+
+    init(CONTAINER_ID, 'http://example.com')
+
+    expect(consoleErrorMock).toHaveBeenCalledWith(
+      expect.stringContaining('Only https: URLs are allowed')
+    )
+    expect(document.getElementById('PiwikPROInitializer')).toBeNull()
+
+    consoleErrorMock.mockRestore()
+  })
+
   it('should push events to the data layer with correct name', () => {
-    const dataLayerName = 'my-data-layer'
-    init('containerId', 'containerURL', {
+    const dataLayerName = 'myDataLayer'
+    init(CONTAINER_ID, CONTAINER_URL, {
       dataLayerName,
     })
     const event = { event: 'event' }
@@ -92,41 +119,94 @@ describe('init', () => {
     // first entry is from init script
     expect((window[dataLayerName] as DataLayerEntry[])[1]).toEqual(event)
   })
+
+  it('should support data layer names with dashes', () => {
+    const dataLayerName = 'my-data-layer'
+    init(CONTAINER_ID, CONTAINER_URL, {
+      dataLayerName,
+    })
+    const event = { event: 'dashed-layer-event' }
+    DataLayer.push(event)
+
+    expect((window[dataLayerName] as DataLayerEntry[])[1]).toEqual(event)
+  })
 })
 
 describe('getInitScript', () => {
-  it('should include nonce in query parameters when nonce value is provided', () => {
+  it('should include nonce in config when nonce value is provided', () => {
     const scriptContent = getInitScript({
-      containerId: 'test-container',
-      containerUrl: 'https://example.com',
+      containerId: CONTAINER_ID,
+      containerUrl: CONTAINER_URL,
       dataLayerName: 'dataLayer',
       nonceValue: 'test-nonce',
     })
 
-    expect(scriptContent).toContain(',tags.nonce="test-nonce"')
+    expect(scriptContent).toContain('"nonceValue":"test-nonce"')
+    expect(scriptContent).toContain(
+      'config.nonceValue&&(tags.nonce=config.nonceValue)'
+    )
   })
 
-  it('should not include nonce in query parameters when nonce value is not provided', () => {
+  it('should not include nonce in config when nonce value is not provided', () => {
     const scriptContent = getInitScript({
-      containerId: 'test-container',
-      containerUrl: 'https://example.com',
+      containerId: CONTAINER_ID,
+      containerUrl: CONTAINER_URL,
       dataLayerName: 'dataLayer',
     })
 
-    expect(scriptContent).not.toContain('tags.nonce=')
+    expect(scriptContent).not.toContain('"nonceValue"')
   })
 
   it('should handle trailing slash in containerUrl', () => {
-    // One slash is always added in getInitScript, thats why not expected value is `${containerUrl}//`
-    const expectContainerUrl = `https://example.com/`
-    const notExpectContainerUrl = `https://example.com//`
-
     const scriptContent = getInitScript({
-      containerUrl: 'https://example.com/',
-      containerId: 'test-container',
+      containerUrl: `${CONTAINER_URL}/`,
+      containerId: CONTAINER_ID,
     })
 
-    expect(scriptContent).toContain(expectContainerUrl)
-    expect(scriptContent).not.toContain(notExpectContainerUrl)
+    expect(scriptContent).toContain(`"containerUrl":"${CONTAINER_URL}"`)
+    expect(scriptContent).not.toContain(`"containerUrl":"${CONTAINER_URL}/"`)
+  })
+
+  it('should encode configuration as a JSON object literal', () => {
+    const scriptContent = getInitScript({
+      containerId: CONTAINER_ID,
+      containerUrl: CONTAINER_URL,
+    })
+
+    expect(scriptContent).toMatch(
+      /\)\(window, document, \{.*"containerId":"1f74dda5-b598-41d6-a9e4-f501ef4379e1".*\}\);$/s
+    )
+  })
+
+  it('should reject unsafe containerUrl values', () => {
+    expect(() =>
+      getInitScript({
+        containerId: CONTAINER_ID,
+        containerUrl: 'https://example.com/";alert(1);//',
+      })
+    ).toThrow(/control characters, quotes, or whitespace/)
+  })
+
+  it('should reject unsafe dataLayerName values', () => {
+    expect(() =>
+      getInitScript({
+        containerId: CONTAINER_ID,
+        containerUrl: CONTAINER_URL,
+        dataLayerName: "');alert(1);//",
+      })
+    ).toThrow(/Use letters, digits/)
+  })
+
+  it('should encode data layer names with dashes in the config literal', () => {
+    const scriptContent = getInitScript({
+      containerId: CONTAINER_ID,
+      containerUrl: CONTAINER_URL,
+      dataLayerName: 'my-data-layer',
+    })
+
+    expect(scriptContent).toContain('"dataLayerName":"my-data-layer"')
+    expect(scriptContent).toContain(
+      'encodeURIComponent(dataLayerName)'
+    )
   })
 })
