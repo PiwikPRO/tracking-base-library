@@ -40,12 +40,6 @@ export function assertDataLayerName(name: string): string {
  * slashes stripped.
  */
 export function assertContainerUrl(url: string): string {
-  if (DISALLOWED_URL_CHARS.test(url)) {
-    throw new Error(
-      'Invalid tracking URL for Piwik Pro. URLs must not contain control characters, quotes, or whitespace.'
-    )
-  }
-
   let parsed: URL
   try {
     parsed = new URL(url)
@@ -65,7 +59,23 @@ export function assertContainerUrl(url: string): string {
     )
   }
 
-  return stripTrailingSlashes(`${parsed.origin}${parsed.pathname}`)
+  const canonical = stripTrailingSlashes(`${parsed.origin}${parsed.pathname}`)
+
+  let decoded: string
+  try {
+    // decodeURI keeps reserved URL chars (/, :, etc.); rejects malformed % sequences
+    decoded = decodeURI(canonical)
+  } catch {
+    throw new Error('Invalid tracking URL for Piwik Pro.')
+  }
+
+  if (DISALLOWED_URL_CHARS.test(decoded)) {
+    throw new Error(
+      'Invalid tracking URL for Piwik Pro. URLs must not contain control characters, quotes, or whitespace.'
+    )
+  }
+
+  return canonical
 }
 
 /**

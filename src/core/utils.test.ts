@@ -107,6 +107,24 @@ describe('assertContainerUrl', () => {
     )
   })
 
+  it('rejects percent-encoded quotes, whitespace, or control characters', () => {
+    expect(() => assertContainerUrl('https://example.com/%22')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/%20')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/%0A')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/%0D%0A')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+    expect(() => assertContainerUrl('https://example.com/%27')).toThrow(
+      /control characters, quotes, or whitespace/
+    )
+  })
+
   it('rejects embedded credentials', () => {
     expect(() => assertContainerUrl('https://user:pass@example.com')).toThrow(
       /credentials/
