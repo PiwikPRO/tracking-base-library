@@ -9,7 +9,7 @@ type PpmsApi = (...args: unknown[]) => void
 type Ppms = Record<string, { api: PpmsApi }>
 type DataLayerEntry = { event: string; start?: number; parameters?: unknown[] }
 
-const CONTAINER_ID = 'my-container'
+const CONTAINER_ID = '1f74dda5-b598-41d6-a9e4-f501ef4379e1'
 const CONTAINER_URL = 'https://example.com'
 
 function dataLayer(name = 'dataLayer'): DataLayerEntry[] {
@@ -37,7 +37,9 @@ beforeEach(() => {
   document.head.innerHTML = ''
   document.body.innerHTML = ''
   delete (window as Record<string, unknown>).dataLayer
+  delete (window as Record<string, unknown>).myDataLayer
   delete (window as Record<string, unknown>)['my-data-layer']
+  delete (window as Record<string, unknown>)['my$data']
   delete (window as Record<string, unknown>).ppms
 })
 
@@ -75,12 +77,44 @@ describe('init script', () => {
     run({
       containerId: CONTAINER_ID,
       containerUrl: CONTAINER_URL,
+      dataLayerName: 'myDataLayer',
+    })
+
+    expect(dataLayer('myDataLayer')[0]).toMatchObject({ event: 'stg.start' })
+    expect(loaderScript()?.getAttribute('src')).toContain(
+      'data_layer_name=myDataLayer'
+    )
+  })
+
+  it('routes bootstrap and loader to a dashed data layer name', () => {
+    run({
+      containerId: CONTAINER_ID,
+      containerUrl: CONTAINER_URL,
       dataLayerName: 'my-data-layer',
     })
 
     expect(dataLayer('my-data-layer')[0]).toMatchObject({ event: 'stg.start' })
     expect(loaderScript()?.getAttribute('src')).toContain(
       'data_layer_name=my-data-layer'
+    )
+
+    ppms().tm.api('trackEvent', 'category', 'action')
+    expect(dataLayer('my-data-layer').at(-1)).toEqual({
+      event: 'ppms.tm:trackEvent',
+      parameters: ['category', 'action'],
+    })
+  })
+
+  it('URI-encodes special characters in the data_layer_name query param', () => {
+    run({
+      containerId: CONTAINER_ID,
+      containerUrl: CONTAINER_URL,
+      dataLayerName: 'my$data',
+    })
+
+    expect(dataLayer('my$data')[0]).toMatchObject({ event: 'stg.start' })
+    expect(loaderScript()?.getAttribute('src')).toContain(
+      `data_layer_name=${encodeURIComponent('my$data')}`
     )
   })
 
