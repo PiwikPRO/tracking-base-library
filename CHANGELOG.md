@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/PiwikPRO/tracking-base-library/compare/1.7.1...2.0.0)
+
+### Merged
+
+- refactor!: harden configuration validation [`#57`](https://github.com/PiwikPRO/tracking-base-library/pull/57)
+- ci: add pr title lint [`#55`](https://github.com/PiwikPRO/tracking-base-library/pull/55)
+- test: added integration and ecommerce unit tests [`#53`](https://github.com/PiwikPRO/tracking-base-library/pull/53)
+- test: added tests for async calls [`#52`](https://github.com/PiwikPRO/tracking-base-library/pull/52)
+- test: added unit test for synchronous services calls [`#51`](https://github.com/PiwikPRO/tracking-base-library/pull/51)
+- chore: added Changelog [`#50`](https://github.com/PiwikPRO/tracking-base-library/pull/50)
+- chore: Bump typedoc and update Readme [`#49`](https://github.com/PiwikPRO/tracking-base-library/pull/49)
+
+### Commits
+
+- refactor: harden against malicious values [`f47a49e`](https://github.com/PiwikPRO/tracking-base-library/commit/f47a49ee59d5ebe7f2a977f9aba79cb6c4571800)
+- style: run formatter [`78c4f27`](https://github.com/PiwikPRO/tracking-base-library/commit/78c4f27fb736f5f84aa525aff23837ef2c71ef29)
+- fix: check for control characters after decoding to avoid percent-encoded forbidden chars [`8af143d`](https://github.com/PiwikPRO/tracking-base-library/commit/8af143ddf393d5d7e13971b31b44ad94ca2efe54)
+
 ## [1.7.1](https://github.com/PiwikPRO/tracking-base-library/compare/1.7.0...1.7.1) - 2026-07-01
 
 ### Merged
