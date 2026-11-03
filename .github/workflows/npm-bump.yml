@@ -26,7 +26,16 @@ jobs:
         with:
           node-version: '24.22.1'
 
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: PiwikPRO/actions
+          ref: 1c113aa2675ac4dc8a28c2c1b4c03b6bec93a2fd
+          token: ${{ secrets.ACTIONS_READ_TOKEN }}
+          path: .shared-actions
+          persist-credentials: false
+          sparse-checkout: javascript/npm-bump
+
       - name: Bump NPM package version
-        uses: PiwikPRO/actions/javascript/npm-bump@master
+        uses: ./.shared-actions/javascript/npm-bump
         with:
           version: ${{ inputs.version }}
